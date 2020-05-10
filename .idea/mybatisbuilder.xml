@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MybatisBuilder.project.settings">
+    <option name="connectionInfoList">
+      <list>
+        <ConnectionInfo>
+          <option name="database" value="netos.weny" />
+          <option name="description" value="" />
+          <option name="driverClass" value="" />
+          <option name="driverLibrary" value="" />
+          <option name="driverType" value="MySQL" />
+          <option name="host" value="47.104.128.137" />
+          <option name="id" value="7f3bfc0defbf4e21bbfecd81a648fe95" />
+          <option name="name" value="netos.weny" />
+          <option name="port" value="3306" />
+          <option name="url" value="" />
+          <option name="userName" value="cj" />
+        </ConnectionInfo>
+      </list>
+    </option>
+    <option name="defaultParameters">
+      <DefaultParameters>
+        <option name="renameConfig">
+          <Config>
+            <option name="mapperTypePattern" value="" />
+            <option name="exampleTypePattern" value="" />
+            <option name="sqlFileNamePattern" value="" />
+          </Config>
+        </option>
+        <option name="selectWithLockConfig">
+          <SelectWithLockConfig>
+            <option name="byPrimaryKeyWithLockOverride" value="" />
+            <option name="byExampleWithLockOverride" value="" />
+          </SelectWithLockConfig>
+        </option>
+      </DefaultParameters>
+    </option>
+    <option name="historyMap">
+      <map>
+        <entry key="JAVA_CLIENT_PACKAGE">
+          <value>
+            <list>
+              <option value="cj.netos.oc.wybank.mapper" />
+            </list>
+          </value>
+        </entry>
+        <entry key="JAVA_MODEL_PACKAGE">
+          <value>
+            <list>
+              <option value="cj.netos.oc.wybank.model" />
+            </list>
+          </value>
+        </entry>
+        <entry key="SQL_MAP_PACKAGE">
+          <value>
+            <list>
+              <option value="cj.db.mappings" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastGeneratorParamWrapper">
+      <GeneratorParamWrapper>
+        <option name="defaultTableConfigWrapper">
+          <TableConfigurationWrapper>
+            <option name="domainObjectRenamingRule">
+              <DomainObjectRenamingRule>
+                <option name="replaceString" value="" />
+                <option name="searchString" value="" />
+              </DomainObjectRenamingRule>
+            </option>
+            <option name="generatedKeyWrapper">
+              <GeneratedKeyWrapper>
+                <option name="column" value="" />
+              </GeneratedKeyWrapper>
+            </option>
+          </TableConfigurationWrapper>
+        </option>
+        <option name="javaClientConfig">
+          <JavaClientGeneratorConfiguration>
+            <option name="configurationType" value="XMLMAPPER" />
+            <option name="targetPackage" value="cj.netos.oc.wybank.mapper" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj.netos.oc.wybank.program/src" />
+          </JavaClientGeneratorConfiguration>
+        </option>
+        <option name="javaModelConfig">
+          <JavaModelGeneratorConfiguration>
+            <option name="targetPackage" value="cj.netos.oc.wybank.model" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj.netos.oc.wybank.program/src" />
+          </JavaModelGeneratorConfiguration>
+        </option>
+        <option name="sqlMapConfig">
+          <SqlMapGeneratorConfiguration>
+            <option name="targetPackage" value="cj.db.mappings" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj.netos.oc.wybank.program/src" />
+          </SqlMapGeneratorConfiguration>
+        </option>
+      </GeneratorParamWrapper>
+    </option>
+    <option name="tableInfoMap">
+      <map>
+        <entry key="netos.weny#absorb_bucket">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="AbsorbBucket" />
+              <option name="tableComment" value="洇金余额" />
+              <option name="tableName" value="absorb_bucket" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#bank_info">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="BankInfo" />
+              <option name="tableComment" value="银行信息" />
+              <option name="tableName" value="bank_info" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#exchange_index">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ExchangeIndex" />
+              <option name="tableComment" value="分录类承兑相关指标" />
+              <option name="tableName" value="exchange_index" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#exchange_ledger">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ExchangeLedger" />
+              <option name="tableComment" value="承兑台账" />
+              <option name="tableName" value="exchange_ledger" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#exchange_record">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ExchangeRecord" />
+              <option name="tableComment" value="承兑流水表。&#10;到达市盈率自动承况，即实现结算程序" />
+              <option name="tableName" value="exchange_record" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#free_bucket">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="FreeBucket" />
+              <option name="tableComment" value="自由金桶，由于该表是在清算时产生，为了性能与交易拆分来跟踪自由金余额" />
+              <option name="tableName" value="free_bucket" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#freezen_bill">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="FreezenBill" />
+              <option name="tableComment" value="冻结资金账单。有：承兑单、申购单、分账单" />
+              <option name="tableName" value="freezen_bill" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#freezen_bucket">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="FreezenBucket" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="freezen_bucket" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#fund_bill">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="FundBill" />
+              <option name="tableComment" value="资金现量账单" />
+              <option name="tableName" value="fund_bill" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#fund_bucket">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="FundBucket" />
+              <option name="tableComment" value="资金现量" />
+              <option name="tableName" value="fund_bucket" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#purch_index">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="PurchIndex" />
+              <option name="tableComment" value="分录类申购相关指标" />
+              <option name="tableName" value="purch_index" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#purch_ledger">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="PurchLedger" />
+              <option name="tableComment" value="申购台账" />
+              <option name="tableName" value="purch_ledger" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#purchase_record">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="PurchaseRecord" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="purchase_record" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_bill">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterBill" />
+              <option name="tableComment" value="分账账单。" />
+              <option name="tableName" value="shunter_bill" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_details">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterDetails" />
+              <option name="tableComment" value="分账明细。加起来等于shunter_record的amount&#10;庸余：记录分账时shunter_rule规则的快照" />
+              <option name="tableName" value="shunter_details" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_index">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterIndex" />
+              <option name="tableComment" value="分录类分账相关指标" />
+              <option name="tableName" value="shunter_index" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_index_details">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterIndexDetails" />
+              <option name="tableComment" value="分账指标明细&#10;各项汇总" />
+              <option name="tableName" value="shunter_index_details" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_ledge_details">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterLedgeDetails" />
+              <option name="tableComment" value="分账台账明细&#10;庸余：记录分账时shunter_rule规则的快照" />
+              <option name="tableName" value="shunter_ledge_details" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_ledger">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterLedger" />
+              <option name="tableComment" value="分账台账" />
+              <option name="tableName" value="shunter_ledger" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_record">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterRecord" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="shunter_record" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#shunter_rule">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="ShunterRule" />
+              <option name="tableComment" value="分账规则表，定义分账比例和具体的分账目标" />
+              <option name="tableName" value="shunter_rule" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#stock_bill">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="StockBill" />
+              <option name="tableComment" value="纹银账单，涉及申购与承兑" />
+              <option name="tableName" value="stock_bill" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#stock_bucket">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="StockBucket" />
+              <option name="tableComment" value="自由金桶，由于该表是在清算时产生，为了性能与交易拆分来跟踪自由金余额" />
+              <option name="tableName" value="stock_bucket" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#ttm_config">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="TtmConfig" />
+              <option name="tableComment" value="市盈率配置" />
+              <option name="tableName" value="ttm_config" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny#work_switch_day">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="WorkSwitchDay" />
+              <option name="tableComment" value="系统日切表" />
+              <option name="tableName" value="work_switch_day" />
+            </TableInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
