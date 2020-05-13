@@ -337,6 +337,126 @@ public class TtmConfigExample {
             addCriterion("ttm not between", value1, value2, "ttm");
             return (Criteria) this;
         }
+
+        public Criteria andMinAmountIsNull() {
+            addCriterion("min_amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountIsNotNull() {
+            addCriterion("min_amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountEqualTo(Long value) {
+            addCriterion("min_amount =", value, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountNotEqualTo(Long value) {
+            addCriterion("min_amount <>", value, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountGreaterThan(Long value) {
+            addCriterion("min_amount >", value, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountGreaterThanOrEqualTo(Long value) {
+            addCriterion("min_amount >=", value, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountLessThan(Long value) {
+            addCriterion("min_amount <", value, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountLessThanOrEqualTo(Long value) {
+            addCriterion("min_amount <=", value, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountIn(List<Long> values) {
+            addCriterion("min_amount in", values, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountNotIn(List<Long> values) {
+            addCriterion("min_amount not in", values, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountBetween(Long value1, Long value2) {
+            addCriterion("min_amount between", value1, value2, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMinAmountNotBetween(Long value1, Long value2) {
+            addCriterion("min_amount not between", value1, value2, "minAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountIsNull() {
+            addCriterion("max_amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountIsNotNull() {
+            addCriterion("max_amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountEqualTo(Long value) {
+            addCriterion("max_amount =", value, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountNotEqualTo(Long value) {
+            addCriterion("max_amount <>", value, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountGreaterThan(Long value) {
+            addCriterion("max_amount >", value, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountGreaterThanOrEqualTo(Long value) {
+            addCriterion("max_amount >=", value, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountLessThan(Long value) {
+            addCriterion("max_amount <", value, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountLessThanOrEqualTo(Long value) {
+            addCriterion("max_amount <=", value, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountIn(List<Long> values) {
+            addCriterion("max_amount in", values, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountNotIn(List<Long> values) {
+            addCriterion("max_amount not in", values, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountBetween(Long value1, Long value2) {
+            addCriterion("max_amount between", value1, value2, "maxAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxAmountNotBetween(Long value1, Long value2) {
+            addCriterion("max_amount not between", value1, value2, "maxAmount");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

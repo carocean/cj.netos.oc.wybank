@@ -65,6 +65,12 @@ public class BankInfo {
      */
     private BigDecimal freeRatio;
 
+    /**
+     * Column: creator
+     * Remark: 创建者
+     */
+    private String creator;
+
     public String getId() {
         return id;
     }
@@ -143,5 +149,13 @@ public class BankInfo {
 
     public void setFreeRatio(BigDecimal freeRatio) {
         this.freeRatio = freeRatio;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator == null ? null : creator.trim();
     }
 }

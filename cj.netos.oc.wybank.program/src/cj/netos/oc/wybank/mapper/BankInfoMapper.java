@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface BankInfoMapper {
+
     /**
      * @mbg.generated generated automatically, do not modify!
      */
@@ -60,4 +61,8 @@ public interface BankInfoMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(BankInfo record);
+
+    List<BankInfo> pageWenyBank(@Param(value = "limit") int limit, @Param(value = "offset") int offset);
+
+    void updateState(@Param(value = "banksn") String banksn, @Param(value = "state") int state);
 }

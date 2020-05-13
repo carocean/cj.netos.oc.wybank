@@ -13,6 +13,7 @@
     <result column="principal_ratio" jdbcType="DECIMAL" property="principalRatio" />
     <result column="reserve_ratio" jdbcType="DECIMAL" property="reserveRatio" />
     <result column="free_ratio" jdbcType="DECIMAL" property="freeRatio" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -77,7 +78,7 @@
   <sql id="Base_Column_List">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     id, title, `owner`, property, ctime, `location`, `state`, principal_ratio, reserve_ratio, 
-    free_ratio
+    free_ratio, creator
   </sql>
   <select id="selectByExample" parameterType="cj.netos.oc.wybank.model.BankInfoExample" resultMap="BaseResultMap">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -118,11 +119,11 @@
     insert into bank_info (id, title, `owner`, 
       property, ctime, `location`, 
       `state`, principal_ratio, reserve_ratio, 
-      free_ratio)
+      free_ratio, creator)
     values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{owner,jdbcType=VARCHAR}, 
       #{property,jdbcType=INTEGER}, #{ctime,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{principalRatio,jdbcType=DECIMAL}, #{reserveRatio,jdbcType=DECIMAL}, 
-      #{freeRatio,jdbcType=DECIMAL})
+      #{freeRatio,jdbcType=DECIMAL}, #{creator,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cj.netos.oc.wybank.model.BankInfo">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -158,6 +159,9 @@
       <if test="freeRatio != null">
         free_ratio,
       </if>
+      <if test="creator != null">
+        creator,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -189,6 +193,9 @@
       </if>
       <if test="freeRatio != null">
         #{freeRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -233,6 +240,9 @@
       <if test="record.freeRatio != null">
         free_ratio = #{record.freeRatio,jdbcType=DECIMAL},
       </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -250,7 +260,8 @@
       `state` = #{record.state,jdbcType=INTEGER},
       principal_ratio = #{record.principalRatio,jdbcType=DECIMAL},
       reserve_ratio = #{record.reserveRatio,jdbcType=DECIMAL},
-      free_ratio = #{record.freeRatio,jdbcType=DECIMAL}
+      free_ratio = #{record.freeRatio,jdbcType=DECIMAL},
+      creator = #{record.creator,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -286,6 +297,9 @@
       <if test="freeRatio != null">
         free_ratio = #{freeRatio,jdbcType=DECIMAL},
       </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -300,7 +314,22 @@
       `state` = #{state,jdbcType=INTEGER},
       principal_ratio = #{principalRatio,jdbcType=DECIMAL},
       reserve_ratio = #{reserveRatio,jdbcType=DECIMAL},
-      free_ratio = #{freeRatio,jdbcType=DECIMAL}
+      free_ratio = #{freeRatio,jdbcType=DECIMAL},
+      creator = #{creator,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="pageWenyBank" parameterType="cj.netos.oc.wybank.model.BankInfoExample" resultMap="BaseResultMap">
+    select
+    *
+    from bank_info
+    limit #{offset},#{limit}
+  </select>
+
+  <update id="updateState" parameterType="cj.netos.oc.wybank.model.BankInfo">
+    update bank_info
+    set
+    `state` = #{state,jdbcType=INTEGER}
+    where id = #{banksn,jdbcType=VARCHAR}
   </update>
 </mapper>

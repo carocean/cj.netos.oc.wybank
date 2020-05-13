@@ -8,6 +8,7 @@
     <result column="person" jdbcType="VARCHAR" property="person" />
     <result column="ratio" jdbcType="DECIMAL" property="ratio" />
     <result column="bankid" jdbcType="VARCHAR" property="bankid" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    id, subject, person, ratio, bankid
+    id, subject, person, ratio, bankid, `alias`
   </sql>
   <select id="selectByExample" parameterType="cj.netos.oc.wybank.model.ShunterRuleExample" resultMap="BaseResultMap">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -110,9 +111,11 @@
   <insert id="insert" parameterType="cj.netos.oc.wybank.model.ShunterRule">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     insert into shunter_rule (id, subject, person, 
-      ratio, bankid)
+      ratio, bankid, `alias`
+      )
     values (#{id,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{person,jdbcType=VARCHAR}, 
-      #{ratio,jdbcType=DECIMAL}, #{bankid,jdbcType=VARCHAR})
+      #{ratio,jdbcType=DECIMAL}, #{bankid,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cj.netos.oc.wybank.model.ShunterRule">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -133,6 +136,9 @@
       <if test="bankid != null">
         bankid,
       </if>
+      <if test="alias != null">
+        `alias`,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -149,6 +155,9 @@
       </if>
       <if test="bankid != null">
         #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +187,9 @@
       <if test="record.bankid != null">
         bankid = #{record.bankid,jdbcType=VARCHAR},
       </if>
+      <if test="record.alias != null">
+        `alias` = #{record.alias,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +202,8 @@
       subject = #{record.subject,jdbcType=VARCHAR},
       person = #{record.person,jdbcType=VARCHAR},
       ratio = #{record.ratio,jdbcType=DECIMAL},
-      bankid = #{record.bankid,jdbcType=VARCHAR}
+      bankid = #{record.bankid,jdbcType=VARCHAR},
+      `alias` = #{record.alias,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,6 +224,9 @@
       <if test="bankid != null">
         bankid = #{bankid,jdbcType=VARCHAR},
       </if>
+      <if test="alias != null">
+        `alias` = #{alias,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -220,7 +236,8 @@
     set subject = #{subject,jdbcType=VARCHAR},
       person = #{person,jdbcType=VARCHAR},
       ratio = #{ratio,jdbcType=DECIMAL},
-      bankid = #{bankid,jdbcType=VARCHAR}
+      bankid = #{bankid,jdbcType=VARCHAR},
+      `alias` = #{alias,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface FundBucketMapper {
+
     /**
      * @mbg.generated generated automatically, do not modify!
      */

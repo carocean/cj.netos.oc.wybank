@@ -340,6 +340,16 @@
             </TableInfo>
           </value>
         </entry>
+        <entry key="netos.weny#work_day">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny" />
+              <option name="domainName" value="WorkDay" />
+              <option name="tableComment" value="系统日切表" />
+              <option name="tableName" value="work_day" />
+            </TableInfo>
+          </value>
+        </entry>
         <entry key="netos.weny#work_switch_day">
           <value>
             <TableInfo>

@@ -22,6 +22,18 @@ public class TtmConfig {
      */
     private BigDecimal ttm;
 
+    /**
+     * Column: min_amount
+     * Remark: 市盈率所在区间的下边界金额
+     */
+    private Long minAmount;
+
+    /**
+     * Column: max_amount
+     * Remark: 上边界金额
+     */
+    private Long maxAmount;
+
     public String getId() {
         return id;
     }
@@ -44,5 +56,21 @@ public class TtmConfig {
 
     public void setTtm(BigDecimal ttm) {
         this.ttm = ttm;
+    }
+
+    public Long getMinAmount() {
+        return minAmount;
+    }
+
+    public void setMinAmount(Long minAmount) {
+        this.minAmount = minAmount;
+    }
+
+    public Long getMaxAmount() {
+        return maxAmount;
+    }
+
+    public void setMaxAmount(Long maxAmount) {
+        this.maxAmount = maxAmount;
     }
 }

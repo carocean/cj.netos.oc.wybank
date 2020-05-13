@@ -14,7 +14,7 @@ public class ShunterRule {
 
     /**
      * Column: subject
-     * Remark: 分账的目标主题。如：地商，平台，运营商，网络洇金，其它
+     * Remark: 分账的目标主题,为英文。如：地商，平台，运营商，网络洇金，其它
      */
     private String subject;
 
@@ -35,6 +35,12 @@ public class ShunterRule {
      * Remark: 每个行的可能不同
      */
     private String bankid;
+
+    /**
+     * Column: alias
+     * Remark: 别名，为subject起个别名
+     */
+    private String alias;
 
     public String getId() {
         return id;
@@ -74,5 +80,13 @@ public class ShunterRule {
 
     public void setBankid(String bankid) {
         this.bankid = bankid == null ? null : bankid.trim();
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias == null ? null : alias.trim();
     }
 }
