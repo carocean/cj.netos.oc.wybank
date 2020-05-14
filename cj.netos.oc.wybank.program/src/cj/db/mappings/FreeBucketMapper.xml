@@ -193,4 +193,11 @@
       amount = #{amount,jdbcType=BIGINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <update id="updateAmount" parameterType="cj.netos.oc.wybank.model.FreeBucket">
+    update free_bucket
+    set
+    amount = #{amount,jdbcType=BIGINT}
+    where bankid = #{bankid,jdbcType=VARCHAR}
+  </update>
 </mapper>

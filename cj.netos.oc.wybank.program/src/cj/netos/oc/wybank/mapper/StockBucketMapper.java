@@ -2,8 +2,9 @@ package cj.netos.oc.wybank.mapper;
 
 import cj.netos.oc.wybank.model.StockBucket;
 import cj.netos.oc.wybank.model.StockBucketExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import java.math.BigDecimal;
+import java.util.List;
 
 public interface StockBucketMapper {
 
@@ -61,4 +62,6 @@ public interface StockBucketMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(StockBucket record);
+
+    void updateStock(@Param(value = "stock") BigDecimal stock, @Param(value = "bankid") String bankid);
 }

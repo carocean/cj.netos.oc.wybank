@@ -1,5 +1,6 @@
 package cj.netos.oc.wybank.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -287,52 +288,52 @@ public class StockBucketExample {
             return (Criteria) this;
         }
 
-        public Criteria andStockEqualTo(Long value) {
+        public Criteria andStockEqualTo(BigDecimal value) {
             addCriterion("stock =", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockNotEqualTo(Long value) {
+        public Criteria andStockNotEqualTo(BigDecimal value) {
             addCriterion("stock <>", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockGreaterThan(Long value) {
+        public Criteria andStockGreaterThan(BigDecimal value) {
             addCriterion("stock >", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockGreaterThanOrEqualTo(Long value) {
+        public Criteria andStockGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("stock >=", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockLessThan(Long value) {
+        public Criteria andStockLessThan(BigDecimal value) {
             addCriterion("stock <", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockLessThanOrEqualTo(Long value) {
+        public Criteria andStockLessThanOrEqualTo(BigDecimal value) {
             addCriterion("stock <=", value, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockIn(List<Long> values) {
+        public Criteria andStockIn(List<BigDecimal> values) {
             addCriterion("stock in", values, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockNotIn(List<Long> values) {
+        public Criteria andStockNotIn(List<BigDecimal> values) {
             addCriterion("stock not in", values, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockBetween(Long value1, Long value2) {
+        public Criteria andStockBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("stock between", value1, value2, "stock");
             return (Criteria) this;
         }
 
-        public Criteria andStockNotBetween(Long value1, Long value2) {
+        public Criteria andStockNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("stock not between", value1, value2, "stock");
             return (Criteria) this;
         }

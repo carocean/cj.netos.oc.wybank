@@ -9,7 +9,7 @@
     <result column="bankid" jdbcType="VARCHAR" property="bankid" />
     <result column="order" jdbcType="INTEGER" property="order" />
     <result column="stock" jdbcType="DECIMAL" property="stock" />
-    <result column="balance" jdbcType="BIGINT" property="balance" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
     <result column="refsn" jdbcType="VARCHAR" property="refsn" />
     <result column="ctime" jdbcType="VARCHAR" property="ctime" />
     <result column="note" jdbcType="VARCHAR" property="note" />
@@ -121,7 +121,7 @@
       note, workday)
     values (#{sn,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{participant,jdbcType=VARCHAR}, 
       #{bankid,jdbcType=VARCHAR}, #{order,jdbcType=INTEGER}, #{stock,jdbcType=DECIMAL}, 
-      #{balance,jdbcType=BIGINT}, #{refsn,jdbcType=VARCHAR}, #{ctime,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=DECIMAL}, #{refsn,jdbcType=VARCHAR}, #{ctime,jdbcType=VARCHAR}, 
       #{note,jdbcType=VARCHAR}, #{workday,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cj.netos.oc.wybank.model.StockBill">
@@ -182,7 +182,7 @@
         #{stock,jdbcType=DECIMAL},
       </if>
       <if test="balance != null">
-        #{balance,jdbcType=BIGINT},
+        #{balance,jdbcType=DECIMAL},
       </if>
       <if test="refsn != null">
         #{refsn,jdbcType=VARCHAR},
@@ -228,7 +228,7 @@
         stock = #{record.stock,jdbcType=DECIMAL},
       </if>
       <if test="record.balance != null">
-        balance = #{record.balance,jdbcType=BIGINT},
+        balance = #{record.balance,jdbcType=DECIMAL},
       </if>
       <if test="record.refsn != null">
         refsn = #{record.refsn,jdbcType=VARCHAR},
@@ -256,7 +256,7 @@
       bankid = #{record.bankid,jdbcType=VARCHAR},
       `order` = #{record.order,jdbcType=INTEGER},
       stock = #{record.stock,jdbcType=DECIMAL},
-      balance = #{record.balance,jdbcType=BIGINT},
+      balance = #{record.balance,jdbcType=DECIMAL},
       refsn = #{record.refsn,jdbcType=VARCHAR},
       ctime = #{record.ctime,jdbcType=VARCHAR},
       note = #{record.note,jdbcType=VARCHAR},
@@ -285,7 +285,7 @@
         stock = #{stock,jdbcType=DECIMAL},
       </if>
       <if test="balance != null">
-        balance = #{balance,jdbcType=BIGINT},
+        balance = #{balance,jdbcType=DECIMAL},
       </if>
       <if test="refsn != null">
         refsn = #{refsn,jdbcType=VARCHAR},
@@ -310,7 +310,7 @@
       bankid = #{bankid,jdbcType=VARCHAR},
       `order` = #{order,jdbcType=INTEGER},
       stock = #{stock,jdbcType=DECIMAL},
-      balance = #{balance,jdbcType=BIGINT},
+      balance = #{balance,jdbcType=DECIMAL},
       refsn = #{refsn,jdbcType=VARCHAR},
       ctime = #{ctime,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR},

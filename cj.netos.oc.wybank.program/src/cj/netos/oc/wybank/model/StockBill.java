@@ -44,7 +44,7 @@ public class StockBill {
      * Column: balance
      * Remark: 变化后的纹银现量余额
      */
-    private Long balance;
+    private BigDecimal balance;
 
     /**
      * Column: refsn
@@ -116,11 +116,11 @@ public class StockBill {
         this.stock = stock;
     }
 
-    public Long getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

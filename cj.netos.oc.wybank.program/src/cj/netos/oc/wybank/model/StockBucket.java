@@ -1,5 +1,7 @@
 package cj.netos.oc.wybank.model;
 
+import java.math.BigDecimal;
+
 /**
  * Table: stock_bucket
  */
@@ -18,7 +20,7 @@ public class StockBucket {
      * Column: stock
      * Remark: 纹银存量
      */
-    private Long stock;
+    private BigDecimal stock;
 
     public String getId() {
         return id;
@@ -36,11 +38,11 @@ public class StockBucket {
         this.bankid = bankid == null ? null : bankid.trim();
     }
 
-    public Long getStock() {
+    public BigDecimal getStock() {
         return stock;
     }
 
-    public void setStock(Long stock) {
+    public void setStock(BigDecimal stock) {
         this.stock = stock;
     }
 }

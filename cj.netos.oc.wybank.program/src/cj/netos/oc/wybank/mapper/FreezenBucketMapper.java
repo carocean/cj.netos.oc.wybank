@@ -61,4 +61,6 @@ public interface FreezenBucketMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(FreezenBucket record);
+
+    void updateAmount(@Param(value = "amount") Long amount, @Param(value = "bankid") String bankid);
 }

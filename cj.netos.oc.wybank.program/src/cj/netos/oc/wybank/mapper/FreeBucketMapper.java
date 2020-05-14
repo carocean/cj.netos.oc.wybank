@@ -61,4 +61,6 @@ public interface FreeBucketMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(FreeBucket record);
+
+    void updateAmount(@Param(value = "amount") Long amount, @Param(value = "bankid") String bankid);
 }

@@ -61,4 +61,6 @@ public interface FundBucketMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(FundBucket record);
+
+    void updateAmount(@Param(value = "amount") Long amount, @Param(value = "bankid") String bankid);
 }
