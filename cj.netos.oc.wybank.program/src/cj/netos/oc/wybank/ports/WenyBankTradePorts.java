@@ -1,6 +1,9 @@
 package cj.netos.oc.wybank.ports;
 
-import cj.netos.oc.wybank.IWenyBankTradeService;
+import cj.netos.oc.wybank.IWenyBankExchangeTradeService;
+import cj.netos.oc.wybank.IWenyBankPurchaseTradeService;
+import cj.netos.oc.wybank.bo.ExchangeWenyBO;
+import cj.netos.oc.wybank.bo.PurchaseResponse;
 import cj.netos.oc.wybank.bo.PurchaseWenyBO;
 import cj.netos.oc.wybank.openports.IWenyBankTradePorts;
 import cj.studio.ecm.annotation.CjService;
@@ -11,10 +14,25 @@ import cj.studio.openport.ISecuritySession;
 @CjService(name = "/trade.ports")
 public class WenyBankTradePorts implements IWenyBankTradePorts {
     @CjServiceRef
-    IWenyBankTradeService wenyBankTradeService;
+    IWenyBankPurchaseTradeService wenyBankPurchaseTradeService;
+
+    @CjServiceRef
+    IWenyBankExchangeTradeService wenyBankExchangeTradeService;
 
     @Override
-    public void purchase(ISecuritySession securitySession, PurchaseWenyBO purchaseWenyBO) throws CircuitException {
-        wenyBankTradeService.purchase(purchaseWenyBO);
+    public PurchaseResponse purchase(ISecuritySession securitySession, PurchaseWenyBO purchaseWenyBO) throws CircuitException {
+        wenyBankPurchaseTradeService.purchase(purchaseWenyBO);
+
+        PurchaseResponse response = new PurchaseResponse();
+        response.setPurchaser(purchaseWenyBO.getPurchaser());
+        response.setPurchaserName(purchaseWenyBO.getPurchaserName());
+        response.setRecord(purchaseWenyBO.getRecord());
+        response.setWenyBankID(purchaseWenyBO.getWenyBankID());
+        return response;
+    }
+
+    @Override
+    public void exchange(ISecuritySession securitySession, ExchangeWenyBO exchangeWenyBO) throws CircuitException {
+        wenyBankExchangeTradeService.exchange(exchangeWenyBO);
     }
 }

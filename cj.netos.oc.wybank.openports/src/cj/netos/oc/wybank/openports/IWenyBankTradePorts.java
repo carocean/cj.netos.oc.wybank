@@ -1,6 +1,9 @@
 package cj.netos.oc.wybank.openports;
 
+import cj.netos.oc.wybank.bo.ExchangeWenyBO;
+import cj.netos.oc.wybank.bo.PurchaseResponse;
 import cj.netos.oc.wybank.bo.PurchaseWenyBO;
+import cj.netos.oc.wybank.bo.model.PurchaseRecord;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.openport.AccessTokenIn;
 import cj.studio.openport.IOpenportService;
@@ -15,9 +18,15 @@ import cj.studio.openport.annotations.CjOpenports;
 public interface IWenyBankTradePorts extends IOpenportService {
 
     @CjOpenportAppSecurity
-    @CjOpenport(usage = "申购交易",tokenIn = AccessTokenIn.nope,command = "post")
-    void purchase(ISecuritySession securitySession,
-                  @CjOpenportParameter(usage = "申购单", name = "purchaseBill",in = PKeyInRequest.content) PurchaseWenyBO purchaseWenyBO
+    @CjOpenport(usage = "申购交易", tokenIn = AccessTokenIn.nope, command = "post")
+    PurchaseResponse purchase(ISecuritySession securitySession,
+                              @CjOpenportParameter(usage = "申购单", name = "purchaseBill", in = PKeyInRequest.content) PurchaseWenyBO purchaseWenyBO
+    ) throws CircuitException;
+
+    @CjOpenportAppSecurity
+    @CjOpenport(usage = "承兑交易", tokenIn = AccessTokenIn.nope, command = "post")
+    void exchange(ISecuritySession securitySession,
+                  @CjOpenportParameter(usage = "承兑单", name = "exchangeBill", in = PKeyInRequest.content) ExchangeWenyBO exchangeWenyBO
     ) throws CircuitException;
 
 
