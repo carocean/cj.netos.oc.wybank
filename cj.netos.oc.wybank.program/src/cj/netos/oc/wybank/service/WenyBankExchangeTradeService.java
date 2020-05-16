@@ -40,14 +40,18 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         ExchangeRecord record = exchangeWenyBO.getRecord();
         PriceBucket priceBucket = bucketService.getandInitPriceBucket(record.getBankid());
         long payableAmount = priceBucket.getPrice().multiply(record.getStock()).setScale(0, RoundingMode.HALF_DOWN).longValue();
+        record.setPrice(priceBucket.getPrice());
+        record.setAmount(payableAmount);
+        record.setProfit(record.getAmount()-record.getPurchaseAmount() );
+
         addStockBill(record);
         addFundBill(record, payableAmount);
         addFreezenBill(record, payableAmount);
         addPriceBill(record, priceBucket);
+
     }
 
     private void addPriceBill(ExchangeRecord record, PriceBucket priceBucket) {
-
         PriceBill priceBill = new PriceBill();
         priceBill.setPrice(priceBucket.getPrice());
         priceBill.setBankid(record.getBankid());
