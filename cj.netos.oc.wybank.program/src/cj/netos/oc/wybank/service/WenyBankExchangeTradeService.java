@@ -14,6 +14,7 @@ import cj.netos.oc.wybank.util.IdWorker;
 import cj.studio.ecm.annotation.CjBridge;
 import cj.studio.ecm.annotation.CjService;
 import cj.studio.ecm.annotation.CjServiceRef;
+import cj.studio.ecm.net.CircuitException;
 import cj.studio.orm.mybatis.annotation.CjTransaction;
 
 import java.math.BigDecimal;
@@ -36,19 +37,29 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
     @CjTransaction
     @Override
-    public void exchange(ExchangeWenyBO exchangeWenyBO) {
+    public void exchange(ExchangeWenyBO exchangeWenyBO) throws CircuitException {
         ExchangeRecord record = exchangeWenyBO.getRecord();
+        checkExchanged(record);
+
         PriceBucket priceBucket = bucketService.getandInitPriceBucket(record.getBankid());
         long payableAmount = priceBucket.getPrice().multiply(record.getStock()).setScale(0, RoundingMode.HALF_DOWN).longValue();
         record.setPrice(priceBucket.getPrice());
         record.setAmount(payableAmount);
-        record.setProfit(record.getAmount()-record.getPurchaseAmount() );
+        record.setProfit(record.getAmount() - record.getPurchaseAmount());
 
         addStockBill(record);
         addFundBill(record, payableAmount);
         addFreezenBill(record, payableAmount);
         addPriceBill(record, priceBucket);
 
+    }
+
+    private void checkExchanged(ExchangeRecord record) throws CircuitException {
+        StockBillExample example = new StockBillExample();
+        example.createCriteria().andRefsnEqualTo(record.getSn());
+        if (stockBillMapper.countByExample(example) > 0) {
+            throw new CircuitException("500", String.format("该单已承兑过。承况单号：%s；申购单号：%s", record.getSn(), record.getRefPurchase()));
+        }
     }
 
     private void addPriceBill(ExchangeRecord record, PriceBucket priceBucket) {
@@ -66,9 +77,11 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
-        BigDecimal afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.HALF_DOWN);
-        if (afterPrice.compareTo(new BigDecimal("0.001")) < 0) {
+        BigDecimal afterPrice = null;
+        if (stockBucket.getStock().compareTo(new BigDecimal("0.0")) <= 0) {
             afterPrice = new BigDecimal("0.001");
+        } else {
+            afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.HALF_DOWN);
         }
         priceBill.setAfterPrice(afterPrice);
 

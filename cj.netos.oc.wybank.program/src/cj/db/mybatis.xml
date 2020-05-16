@@ -30,23 +30,11 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="cj/db/mappings/AbsorbBucketMapper.xml"/>
-        <mapper resource="cj/db/mappings/ExchangeIndexMapper.xml"/>
-        <mapper resource="cj/db/mappings/ExchangeLedgerMapper.xml"/>
         <mapper resource="cj/db/mappings/FreeBucketMapper.xml"/>
         <mapper resource="cj/db/mappings/FreezenBillMapper.xml"/>
         <mapper resource="cj/db/mappings/FreezenBucketMapper.xml"/>
         <mapper resource="cj/db/mappings/FundBillMapper.xml"/>
         <mapper resource="cj/db/mappings/FundBucketMapper.xml"/>
-        <mapper resource="cj/db/mappings/PurchIndexMapper.xml"/>
-        <mapper resource="cj/db/mappings/PurchLedgerMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterBillMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterDetailsMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterIndexDetailsMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterIndexMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterLedgeDetailsMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterLedgerMapper.xml"/>
-        <mapper resource="cj/db/mappings/ShunterRecordMapper.xml"/>
         <mapper resource="cj/db/mappings/StockBillMapper.xml"/>
         <mapper resource="cj/db/mappings/StockBucketMapper.xml"/>
         <mapper resource="cj/db/mappings/WorkDayMapper.xml"/>
