@@ -1,5 +1,6 @@
 package cj.netos.oc.wybank;
 
+import cj.netos.oc.wybank.bo.model.*;
 import cj.netos.oc.wybank.model.*;
 
 import java.math.BigDecimal;

@@ -2,10 +2,8 @@ package cj.netos.oc.wybank.ports;
 
 import cj.netos.oc.wybank.IWenyBankExchangeTradeService;
 import cj.netos.oc.wybank.IWenyBankPurchaseTradeService;
-import cj.netos.oc.wybank.bo.ExchangeResponse;
-import cj.netos.oc.wybank.bo.ExchangeWenyBO;
-import cj.netos.oc.wybank.bo.PurchaseResponse;
-import cj.netos.oc.wybank.bo.PurchaseWenyBO;
+import cj.netos.oc.wybank.IWenyBankShuntoutTradeService;
+import cj.netos.oc.wybank.bo.*;
 import cj.netos.oc.wybank.openports.IWenyBankTradePorts;
 import cj.studio.ecm.annotation.CjService;
 import cj.studio.ecm.annotation.CjServiceRef;
@@ -20,6 +18,8 @@ public class WenyBankTradePorts implements IWenyBankTradePorts {
     @CjServiceRef
     IWenyBankExchangeTradeService wenyBankExchangeTradeService;
 
+    @CjServiceRef
+    IWenyBankShuntoutTradeService wenyBankShuntoutTradeService;
     @Override
     public PurchaseResponse purchase(ISecuritySession securitySession, PurchaseWenyBO purchaseWenyBO) throws CircuitException {
         wenyBankPurchaseTradeService.purchase(purchaseWenyBO);
@@ -40,6 +40,17 @@ public class WenyBankTradePorts implements IWenyBankTradePorts {
         response.setExchangerName(exchangeWenyBO.getExchangerName());
         response.setRecord(exchangeWenyBO.getRecord());
         response.setWenyBankID(exchangeWenyBO.getWenyBankID());
+        return response;
+    }
+
+    @Override
+    public ShuntoutResponse shuntout(ISecuritySession securitySession, ShuntoutBO shuntoutBO) throws CircuitException {
+        wenyBankShuntoutTradeService.shuntout(shuntoutBO);
+        ShuntoutResponse response = new ShuntoutResponse();
+        response.setOperatorName(shuntoutBO.getOperatorName());
+        response.setOperator(shuntoutBO.getOperator());
+        response.setWenyBankID(shuntoutBO.getWenyBankID());
+        response.setRecord(shuntoutBO.getRecord());
         return response;
     }
 }

@@ -87,7 +87,7 @@
         <option name="javaModelConfig">
           <JavaModelGeneratorConfiguration>
             <option name="targetPackage" value="cj.netos.oc.wybank.model" />
-            <option name="targetProject" value="$PROJECT_DIR$/cj.netos.oc.wybank.program/src" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj.netos.oc.wybank.openports/src" />
           </JavaModelGeneratorConfiguration>
         </option>
         <option name="sqlMapConfig">
@@ -497,6 +497,16 @@
               <option name="domainName" value="ShunterBill" />
               <option name="tableComment" value="分账账单。" />
               <option name="tableName" value="shunter_bill" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="netos.weny.trade#shunter_buckets">
+          <value>
+            <TableInfo>
+              <option name="database" value="netos.weny.trade" />
+              <option name="domainName" value="ShunterBuckets" />
+              <option name="tableComment" value="分账器余额" />
+              <option name="tableName" value="shunter_buckets" />
             </TableInfo>
           </value>
         </entry>

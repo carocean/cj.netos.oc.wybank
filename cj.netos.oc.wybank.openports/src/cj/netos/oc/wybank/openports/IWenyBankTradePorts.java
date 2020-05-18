@@ -1,10 +1,6 @@
 package cj.netos.oc.wybank.openports;
 
-import cj.netos.oc.wybank.bo.ExchangeResponse;
-import cj.netos.oc.wybank.bo.ExchangeWenyBO;
-import cj.netos.oc.wybank.bo.PurchaseResponse;
-import cj.netos.oc.wybank.bo.PurchaseWenyBO;
-import cj.netos.oc.wybank.bo.model.PurchaseRecord;
+import cj.netos.oc.wybank.bo.*;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.openport.AccessTokenIn;
 import cj.studio.openport.IOpenportService;
@@ -30,5 +26,9 @@ public interface IWenyBankTradePorts extends IOpenportService {
                               @CjOpenportParameter(usage = "承兑单", name = "exchangeBill", in = PKeyInRequest.content) ExchangeWenyBO exchangeWenyBO
     ) throws CircuitException;
 
-
+    @CjOpenportAppSecurity
+    @CjOpenport(usage = "转出交易（自由金余额）", tokenIn = AccessTokenIn.nope, command = "post")
+    ShuntoutResponse shuntout(ISecuritySession securitySession,
+                              @CjOpenportParameter(usage = "分账单。只有分账才调用提现，因此对应分账单", name = "shuntoutBill", in = PKeyInRequest.content) ShuntoutBO shuntoutBO
+    ) throws CircuitException;
 }

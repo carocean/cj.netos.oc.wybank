@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cj.netos.oc.wybank.mapper.ShunterRuleMapper">
-  <resultMap id="BaseResultMap" type="cj.netos.oc.wybank.model.ShunterRule">
+<mapper namespace="cj.netos.oc.wybank.mapper.PriceBucketMapper">
+  <resultMap id="BaseResultMap" type="cj.netos.oc.wybank.model.PriceBucket">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="subject" jdbcType="VARCHAR" property="subject" />
-    <result column="person" jdbcType="VARCHAR" property="person" />
-    <result column="ratio" jdbcType="DECIMAL" property="ratio" />
     <result column="bankid" jdbcType="VARCHAR" property="bankid" />
-    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!-- @mbg.generated: generated automatically, do not modify! -->
@@ -72,16 +69,16 @@
   </sql>
   <sql id="Base_Column_List">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    id, subject, person, ratio, bankid, `alias`
+    id, bankid, price
   </sql>
-  <select id="selectByExample" parameterType="cj.netos.oc.wybank.model.ShunterRuleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cj.netos.oc.wybank.model.PriceBucketExample" resultMap="BaseResultMap">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from shunter_rule
+    from price_bucket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,102 +90,73 @@
     <!-- @mbg.generated: generated automatically, do not modify! -->
     select 
     <include refid="Base_Column_List" />
-    from shunter_rule
+    from price_bucket
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    delete from shunter_rule
+    delete from price_bucket
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cj.netos.oc.wybank.model.ShunterRuleExample">
+  <delete id="deleteByExample" parameterType="cj.netos.oc.wybank.model.PriceBucketExample">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    delete from shunter_rule
+    delete from price_bucket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cj.netos.oc.wybank.model.ShunterRule">
+  <insert id="insert" parameterType="cj.netos.oc.wybank.model.PriceBucket">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    insert into shunter_rule (id, subject, person, 
-      ratio, bankid, `alias`
+    insert into price_bucket (id, bankid, price
       )
-    values (#{id,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{person,jdbcType=VARCHAR}, 
-      #{ratio,jdbcType=DECIMAL}, #{bankid,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{bankid,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cj.netos.oc.wybank.model.ShunterRule">
+  <insert id="insertSelective" parameterType="cj.netos.oc.wybank.model.PriceBucket">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    insert into shunter_rule
+    insert into price_bucket
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="subject != null">
-        subject,
-      </if>
-      <if test="person != null">
-        person,
-      </if>
-      <if test="ratio != null">
-        ratio,
-      </if>
       <if test="bankid != null">
         bankid,
       </if>
-      <if test="alias != null">
-        `alias`,
+      <if test="price != null">
+        price,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="subject != null">
-        #{subject,jdbcType=VARCHAR},
-      </if>
-      <if test="person != null">
-        #{person,jdbcType=VARCHAR},
-      </if>
-      <if test="ratio != null">
-        #{ratio,jdbcType=DECIMAL},
-      </if>
       <if test="bankid != null">
         #{bankid,jdbcType=VARCHAR},
       </if>
-      <if test="alias != null">
-        #{alias,jdbcType=VARCHAR},
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cj.netos.oc.wybank.model.ShunterRuleExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cj.netos.oc.wybank.model.PriceBucketExample" resultType="java.lang.Long">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    select count(*) from shunter_rule
+    select count(*) from price_bucket
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    update shunter_rule
+    update price_bucket
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.subject != null">
-        subject = #{record.subject,jdbcType=VARCHAR},
-      </if>
-      <if test="record.person != null">
-        person = #{record.person,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ratio != null">
-        ratio = #{record.ratio,jdbcType=DECIMAL},
-      </if>
       <if test="record.bankid != null">
         bankid = #{record.bankid,jdbcType=VARCHAR},
       </if>
-      <if test="record.alias != null">
-        `alias` = #{record.alias,jdbcType=VARCHAR},
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null">
@@ -197,40 +165,28 @@
   </update>
   <update id="updateByExample" parameterType="map">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    update shunter_rule
+    update price_bucket
     set id = #{record.id,jdbcType=VARCHAR},
-      subject = #{record.subject,jdbcType=VARCHAR},
-      person = #{record.person,jdbcType=VARCHAR},
-      ratio = #{record.ratio,jdbcType=DECIMAL},
       bankid = #{record.bankid,jdbcType=VARCHAR},
-      `alias` = #{record.alias,jdbcType=VARCHAR}
+      price = #{record.price,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cj.netos.oc.wybank.model.ShunterRule">
+  <update id="updateByPrimaryKeySelective" parameterType="cj.netos.oc.wybank.model.PriceBucket">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    update shunter_rule
+    update price_bucket
     <set>
-      <if test="subject != null">
-        subject = #{subject,jdbcType=VARCHAR},
-      </if>
-      <if test="person != null">
-        person = #{person,jdbcType=VARCHAR},
-      </if>
-      <if test="ratio != null">
-        ratio = #{ratio,jdbcType=DECIMAL},
-      </if>
       <if test="bankid != null">
         bankid = #{bankid,jdbcType=VARCHAR},
       </if>
-      <if test="alias != null">
-        `alias` = #{alias,jdbcType=VARCHAR},
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cj.netos.oc.wybank.model.ShunterRule">
+  <update id="updateByPrimaryKey" parameterType="cj.netos.oc.wybank.model.PriceBucket">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     update shunter_rule
     set subject = #{subject,jdbcType=VARCHAR},
