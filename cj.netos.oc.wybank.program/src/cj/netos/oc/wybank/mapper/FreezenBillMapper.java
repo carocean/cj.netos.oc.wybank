@@ -2,8 +2,9 @@ package cj.netos.oc.wybank.mapper;
 
 import cj.netos.oc.wybank.model.FreezenBill;
 import cj.netos.oc.wybank.model.FreezenBillExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface FreezenBillMapper {
 
@@ -61,4 +62,14 @@ public interface FreezenBillMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(FreezenBill record);
+
+    List<FreezenBill> page(@Param(value = "bankid") String bankid, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
+    long totalInBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "month") int month);
+
+    long totalOutBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "month") int month);
+
+    long totalInBillOfYear(@Param(value = "bankid") String bankid, @Param(value = "year") int year);
+
+    long totalOutBillOfYear(@Param(value = "bankid") String bankid, @Param(value = "year") int year);
 }

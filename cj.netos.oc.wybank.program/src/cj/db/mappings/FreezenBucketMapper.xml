@@ -200,4 +200,11 @@
     amount = #{amount,jdbcType=BIGINT}
     where bankid = #{bankid,jdbcType=VARCHAR}
   </update>
+
+  <select id="page" parameterType="cj.netos.oc.wybank.model.FreezenBucket" resultMap="BaseResultMap">
+    select
+   *
+    from freezen_bucket
+    limit #{offset},#{limit}
+  </select>
 </mapper>

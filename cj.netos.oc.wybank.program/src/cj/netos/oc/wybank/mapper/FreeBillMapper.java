@@ -61,4 +61,14 @@ public interface FreeBillMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(FreeBill record);
+
+    List<FreeBill> page(@Param(value = "bankid") String bankid, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
+    long totalInBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "month") int month);
+
+    long totalOutBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "month") int month);
+
+    long totalInBillOfYear(@Param(value = "bankid") String bankid, @Param(value = "year") int year);
+
+    long totalOutBillOfYear(@Param(value = "bankid") String bankid, @Param(value = "year") int year);
 }

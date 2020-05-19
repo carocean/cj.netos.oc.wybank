@@ -66,6 +66,36 @@ public class FreezenBill {
      */
     private String workday;
 
+    /**
+     * Column: day
+     * Remark: 天，1-31
+     */
+    private Integer day;
+
+    /**
+     * Column: month
+     * Remark: 月
+     */
+    private Integer month;
+
+    /**
+     * Column: weekday
+     * Remark: 周 1-7
+     */
+    private Integer weekday;
+
+    /**
+     * Column: season
+     * Remark: 季，0-3
+     */
+    private Integer season;
+
+    /**
+     * Column: year
+     * Remark: 年
+     */
+    private Integer year;
+
     public String getSn() {
         return sn;
     }
@@ -152,5 +182,45 @@ public class FreezenBill {
 
     public void setWorkday(String workday) {
         this.workday = workday == null ? null : workday.trim();
+    }
+
+    public Integer getDay() {
+        return day;
+    }
+
+    public void setDay(Integer day) {
+        this.day = day;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
+    public Integer getWeekday() {
+        return weekday;
+    }
+
+    public void setWeekday(Integer weekday) {
+        this.weekday = weekday;
+    }
+
+    public Integer getSeason() {
+        return season;
+    }
+
+    public void setSeason(Integer season) {
+        this.season = season;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 }

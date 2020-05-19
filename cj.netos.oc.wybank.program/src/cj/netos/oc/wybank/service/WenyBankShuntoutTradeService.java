@@ -17,6 +17,8 @@ import cj.studio.ecm.annotation.CjServiceRef;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.orm.mybatis.annotation.CjTransaction;
 
+import java.util.Calendar;
+
 @CjBridge(aspects = "@transaction")
 @CjService(name = "wenyBankShuntoutTradeService")
 public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeService {
@@ -61,6 +63,15 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         bill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
         bill.setNote(record.getNote());
         bill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
+
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        bill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        bill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        bill.setMonth(calendar.get(Calendar.MONTH));
+        bill.setSeason(bill.getMonth()%4);
+        bill.setYear(calendar.get(Calendar.YEAR));
+
         fundBillMapper.insert(bill);
 
         bucketService.updateFundBucket(bill.getBankid(), bill.getBalance());
@@ -80,6 +91,15 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         bill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
         bill.setNote(record.getNote());
         bill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
+
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        bill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        bill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        bill.setMonth(calendar.get(Calendar.MONTH));
+        bill.setSeason(bill.getMonth()%4);
+        bill.setYear(calendar.get(Calendar.YEAR));
+
         freeBillMapper.insert(bill);
 
         bucketService.updateFreeBucket(bill.getBankid(), bill.getBalance());

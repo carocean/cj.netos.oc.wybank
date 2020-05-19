@@ -64,4 +64,6 @@ public interface StockBucketMapper {
     int updateByPrimaryKey(StockBucket record);
 
     void updateStock(@Param(value = "stock") BigDecimal stock, @Param(value = "bankid") String bankid);
+
+    List<StockBucket> page(@Param(value = "limit") int limit, @Param(value = "offset") long offset);
 }

@@ -63,4 +63,6 @@ public interface FreezenBucketMapper {
     int updateByPrimaryKey(FreezenBucket record);
 
     void updateAmount(@Param(value = "amount") Long amount, @Param(value = "bankid") String bankid);
+
+    List<FreezenBucket> page(@Param(value = "limit") int limit, @Param(value = "offset") long offset);
 }

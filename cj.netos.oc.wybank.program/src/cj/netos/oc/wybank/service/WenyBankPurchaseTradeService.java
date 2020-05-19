@@ -16,6 +16,7 @@ import cj.studio.orm.mybatis.annotation.CjTransaction;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Calendar;
 
 @CjBridge(aspects = "@transaction")
 @CjService(name = "wenyBankPurchaseTradeService")
@@ -64,6 +65,14 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         priceBill.setTitle(record.getPersonName());
         priceBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        priceBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        priceBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        priceBill.setMonth(calendar.get(Calendar.MONTH));
+        priceBill.setSeason(priceBill.getMonth()%4);
+        priceBill.setYear(calendar.get(Calendar.YEAR));
+
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
         BigDecimal afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.HALF_DOWN);
@@ -97,6 +106,14 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         stockBill.setTitle(record.getPersonName());
         stockBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        stockBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        stockBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        stockBill.setMonth(calendar.get(Calendar.MONTH));
+        stockBill.setSeason(stockBill.getMonth()%4);
+        stockBill.setYear(calendar.get(Calendar.YEAR));
+
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
 
         BigDecimal balance = stockBucket.getStock().add(stockBill.getStock()).setScale(14, RoundingMode.HALF_DOWN);
@@ -121,6 +138,14 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         freeBill.setTitle(record.getPersonName());
         freeBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        freeBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        freeBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        freeBill.setMonth(calendar.get(Calendar.MONTH));
+        freeBill.setSeason(freeBill.getMonth()%4);
+        freeBill.setYear(calendar.get(Calendar.YEAR));
+
         FreeBucket freeBucket = bucketService.getAndInitFreeBucket(record.getBankid());
 
         freeBill.setBalance(freeBucket.getAmount() + freeBill.getAmount());
@@ -144,6 +169,14 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         freezenBill.setTitle(record.getPersonName());
         freezenBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        freezenBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        freezenBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        freezenBill.setMonth(calendar.get(Calendar.MONTH));
+        freezenBill.setSeason(freezenBill.getMonth()%4);
+        freezenBill.setYear(calendar.get(Calendar.YEAR));
+
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
 
         freezenBill.setBalance(freezenBucket.getAmount() + freezenAmount);
@@ -165,6 +198,14 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         fundBill.setSn(IdWorker.nextId());
         fundBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
         fundBill.setTitle(record.getPersonName());
+
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        fundBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        fundBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        fundBill.setMonth(calendar.get(Calendar.MONTH));
+        fundBill.setSeason(fundBill.getMonth()%4);
+        fundBill.setYear(calendar.get(Calendar.YEAR));
 
         FundBucket fundBucket = bucketService.getAndInitFundBucket(record.getBankid());
 

@@ -200,4 +200,11 @@
     stock = #{stock,jdbcType=DECIMAL}
     where bankid = #{bankid,jdbcType=VARCHAR}
   </update>
+
+  <select id="page" parameterType="cj.netos.oc.wybank.model.StockBucket" resultMap="BaseResultMap">
+    select
+    *
+    from stock_bucket
+    limit #{offset},#{limit}
+  </select>
 </mapper>

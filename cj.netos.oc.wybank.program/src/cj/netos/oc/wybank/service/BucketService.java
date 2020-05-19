@@ -11,7 +11,9 @@ import cj.studio.openport.util.Encript;
 import cj.studio.orm.mybatis.annotation.CjTransaction;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @CjBridge(aspects = "@transaction")
@@ -146,5 +148,47 @@ public class BucketService implements IBucketService {
     @Override
     public void updatePriceBucket(String bankid, BigDecimal afterPrice) {
         priceBucketMapper.updatePrice(afterPrice, bankid);
+    }
+
+    @CjTransaction
+    @Override
+    public Map<String, Object> getAllBucketOfBank(String wenyBankID) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("free", getAndInitFreeBucket(wenyBankID));
+        map.put("freezen", getAndInitFreezenBucket(wenyBankID));
+        map.put("fund", getAndInitFundBucket(wenyBankID));
+        map.put("price", getandInitPriceBucket(wenyBankID));
+        map.put("stock", getAndInitStockBucket(wenyBankID));
+        return map;
+    }
+
+    @CjTransaction
+    @Override
+    public List<StockBucket> pageStockBucket(int limit, long offset) {
+        return stockBucketMapper.page(limit,offset);
+    }
+
+    @CjTransaction
+    @Override
+    public List<FreeBucket> pageFreeBucket(int limit, long offset) {
+        return freeBucketMapper.page(limit,offset);
+    }
+
+    @CjTransaction
+    @Override
+    public List<FreezenBucket> pageFreezenBucket(int limit, long offset) {
+        return freezenBucketMapper.page(limit,offset);
+    }
+
+    @CjTransaction
+    @Override
+    public List<FundBucket> pageFundBucket(int limit, long offset) {
+        return fundBucketMapper.page(limit,offset);
+    }
+
+    @CjTransaction
+    @Override
+    public List<PriceBucket> pagePriceBucket(int limit, long offset) {
+        return priceBucketMapper.page(limit,offset);
     }
 }

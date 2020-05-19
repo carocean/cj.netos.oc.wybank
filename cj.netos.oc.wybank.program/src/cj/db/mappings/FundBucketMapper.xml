@@ -200,4 +200,9 @@
     amount = #{amount,jdbcType=BIGINT}
     where bankid = #{bankid,jdbcType=VARCHAR}
   </update>
+
+  <select id="page" parameterType="cj.netos.oc.wybank.model.FundBucketExample" resultMap="BaseResultMap">
+    select * from fund_bucket
+    limit #{offset},#{limit}
+  </select>
 </mapper>

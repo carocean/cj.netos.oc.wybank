@@ -203,4 +203,10 @@
     price = #{price,jdbcType=DECIMAL}
     where bankid = #{bankid,jdbcType=VARCHAR}
   </update>
+  <select id="page" parameterType="cj.netos.oc.wybank.model.PriceBucket" resultMap="BaseResultMap">
+    select
+    *
+    from price_bucket
+    limit #{offset},#{limit}
+  </select>
 </mapper>

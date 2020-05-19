@@ -63,4 +63,6 @@ public interface FundBucketMapper {
     int updateByPrimaryKey(FundBucket record);
 
     void updateAmount(@Param(value = "amount") Long amount, @Param(value = "bankid") String bankid);
+
+    List<FundBucket> page(@Param(value = "limit") int limit, @Param(value = "offset") long offset);
 }

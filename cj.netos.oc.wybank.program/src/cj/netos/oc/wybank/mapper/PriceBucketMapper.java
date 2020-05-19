@@ -64,4 +64,6 @@ public interface PriceBucketMapper {
     int updateByPrimaryKey(PriceBucket record);
 
     void updatePrice(@Param(value = "price") BigDecimal price, @Param(value = "bankid") String bankid);
+
+    List<PriceBucket> page(@Param(value = "limit") int limit, @Param(value = "offset") long offset);
 }

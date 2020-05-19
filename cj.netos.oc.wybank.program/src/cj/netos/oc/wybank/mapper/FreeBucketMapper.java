@@ -63,4 +63,6 @@ public interface FreeBucketMapper {
     int updateByPrimaryKey(FreeBucket record);
 
     void updateAmount(@Param(value = "amount") Long amount, @Param(value = "bankid") String bankid);
+
+    List<FreeBucket> page(@Param(value = "limit") int limit, @Param(value = "offset") long offset);
 }

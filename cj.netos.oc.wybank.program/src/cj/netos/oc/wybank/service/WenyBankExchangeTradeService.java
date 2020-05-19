@@ -19,6 +19,7 @@ import cj.studio.orm.mybatis.annotation.CjTransaction;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Calendar;
 
 @CjBridge(aspects = "@transaction")
 @CjService(name = "wenyBankExchangeTradeService")
@@ -75,6 +76,14 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         priceBill.setTitle(record.getPersonName());
         priceBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        priceBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        priceBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        priceBill.setMonth(calendar.get(Calendar.MONTH));
+        priceBill.setSeason(priceBill.getMonth()%4);
+        priceBill.setYear(calendar.get(Calendar.YEAR));
+
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
         BigDecimal afterPrice = null;
@@ -103,6 +112,14 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         freezenBill.setTitle(record.getPersonName());
         freezenBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        freezenBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        freezenBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        freezenBill.setMonth(calendar.get(Calendar.MONTH));
+        freezenBill.setSeason(freezenBill.getMonth()%4);
+        freezenBill.setYear(calendar.get(Calendar.YEAR));
+
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
 
         freezenBill.setBalance(freezenBucket.getAmount() + freezenBill.getAmount());
@@ -125,6 +142,14 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         fundBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
         fundBill.setTitle(record.getPersonName());
 
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        fundBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        fundBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        fundBill.setMonth(calendar.get(Calendar.MONTH));
+        fundBill.setSeason(fundBill.getMonth()%4);
+        fundBill.setYear(calendar.get(Calendar.YEAR));
+
         FundBucket fundBucket = bucketService.getAndInitFundBucket(record.getBankid());
 
         fundBill.setBalance(fundBucket.getAmount() + fundBill.getAmount());
@@ -146,6 +171,14 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         stockBill.setSn(IdWorker.nextId());
         stockBill.setTitle(record.getPersonName());
         stockBill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
+
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        stockBill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+        stockBill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
+        stockBill.setMonth(calendar.get(Calendar.MONTH));
+        stockBill.setSeason(stockBill.getMonth()%4);
+        stockBill.setYear(calendar.get(Calendar.YEAR));
 
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
 
