@@ -2,7 +2,9 @@ package cj.netos.oc.wybank.mapper;
 
 import cj.netos.oc.wybank.model.PriceBill;
 import cj.netos.oc.wybank.model.PriceBillExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PriceBillMapper {
@@ -61,4 +63,11 @@ public interface PriceBillMapper {
      * @mbg.generated generated automatically, do not modify!
      */
     int updateByPrimaryKey(PriceBill record);
+
+    List<PriceBill> pagePriceBill(@Param(value = "bankid") String bankid, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
+    List<PriceBill> getPriceBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
+    List<PriceBill> getPriceBillOfDay(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
 }

@@ -25,25 +25,22 @@ public class FreezenBillService implements IFreezenBillService {
     public List<FreezenBill> pageBill(String wenyBankID, int limit, long offset) {
         return freezenBillMapper.page(wenyBankID, limit, offset);
     }
-
     @CjTransaction
     @Override
-    public List<FreezenBill> getBillOfMonth(String wenyBankID, int month) {
-        FreezenBillExample example = new FreezenBillExample();
-        example.createCriteria().andMonthEqualTo(month);
-        return freezenBillMapper.selectByExample(example);
+    public List<FreezenBill> getBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
+        return freezenBillMapper.getBillOfMonth(wenyBankID,year,month,limit,offset);
     }
 
     @CjTransaction
     @Override
-    public long getTotalInBillOfMonth(String wenyBankID, int month) {
-        return freezenBillMapper.totalInBillOfMonth(wenyBankID, month);
+    public long getTotalInBillOfMonth(String wenyBankID, int year, int month) {
+        return freezenBillMapper.totalInBillOfMonth(wenyBankID,year, month);
     }
 
     @CjTransaction
     @Override
-    public long totalOutBillOfMonth(String wenyBankID, int month) {
-        return freezenBillMapper.totalOutBillOfMonth(wenyBankID, month);
+    public long totalOutBillOfMonth(String wenyBankID, int year, int month) {
+        return freezenBillMapper.totalOutBillOfMonth(wenyBankID,year, month);
     }
 
     @CjTransaction

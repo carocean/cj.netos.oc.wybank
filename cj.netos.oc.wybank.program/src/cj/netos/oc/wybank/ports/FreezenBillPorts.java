@@ -21,18 +21,19 @@ public class FreezenBillPorts implements IFreezenBillPorts {
     }
 
     @Override
-    public List<FreezenBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return freezenBillService.getBillOfMonth(wenyBankID,month);
+    public List<FreezenBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year, int month, int limit, long offset) throws CircuitException {
+        return freezenBillService.getBillOfMonth(wenyBankID,year,month,limit,offset);
+    }
+
+
+    @Override
+    public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year,  int month) throws CircuitException {
+        return freezenBillService.getTotalInBillOfMonth(wenyBankID,year,month);
     }
 
     @Override
-    public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return freezenBillService.getTotalInBillOfMonth(wenyBankID,month);
-    }
-
-    @Override
-    public long totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return freezenBillService.totalOutBillOfMonth(wenyBankID,month);
+    public long totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year,  int month) throws CircuitException {
+        return freezenBillService.totalOutBillOfMonth(wenyBankID,year,month);
     }
 
     @Override

@@ -21,18 +21,18 @@ public class FundBillPorts implements IFundBillPorts {
     }
 
     @Override
-    public List<FundBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return fundBillService.getBillOfMonth(wenyBankID,month);
+    public List<FundBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year, int month, int limit, long offset) throws CircuitException {
+        return fundBillService.getBillOfMonth(wenyBankID,year,month,limit,offset);
     }
 
     @Override
-    public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return fundBillService.getTotalInBillOfMonth(wenyBankID,month);
+    public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year,  int month) throws CircuitException {
+        return fundBillService.getTotalInBillOfMonth(wenyBankID,year,month);
     }
 
     @Override
-    public long totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return fundBillService.totalOutBillOfMonth(wenyBankID,month);
+    public long totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year,  int month) throws CircuitException {
+        return fundBillService.totalOutBillOfMonth(wenyBankID,year,month);
     }
 
     @Override

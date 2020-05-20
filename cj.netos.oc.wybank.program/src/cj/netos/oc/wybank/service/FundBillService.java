@@ -24,25 +24,23 @@ public class FundBillService implements IFundBillService {
     public List<FundBill> pageBill(String wenyBankID, int limit, long offset) {
         return fundBillMapper.page(wenyBankID, limit, offset);
     }
+    @CjTransaction
+    @Override
+    public List<FundBill> getBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
+        return fundBillMapper.getBillOfMonth(wenyBankID,year,month,limit,offset);
+    }
+
 
     @CjTransaction
     @Override
-    public List<FundBill> getBillOfMonth(String wenyBankID, int month) {
-        FundBillExample example = new FundBillExample();
-        example.createCriteria().andMonthEqualTo(month);
-        return fundBillMapper.selectByExample(example);
+    public long getTotalInBillOfMonth(String wenyBankID,int year, int month) {
+        return fundBillMapper.totalInBillOfMonth(wenyBankID,year, month);
     }
 
     @CjTransaction
     @Override
-    public long getTotalInBillOfMonth(String wenyBankID, int month) {
-        return fundBillMapper.totalInBillOfMonth(wenyBankID, month);
-    }
-
-    @CjTransaction
-    @Override
-    public long totalOutBillOfMonth(String wenyBankID, int month) {
-        return fundBillMapper.totalOutBillOfMonth(wenyBankID, month);
+    public long totalOutBillOfMonth(String wenyBankID,int year, int month) {
+        return fundBillMapper.totalOutBillOfMonth(wenyBankID,year, month);
     }
 
     @CjTransaction

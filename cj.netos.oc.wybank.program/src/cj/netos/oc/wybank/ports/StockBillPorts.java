@@ -22,18 +22,19 @@ public class StockBillPorts implements IStockBillPorts {
     }
 
     @Override
-    public List<StockBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return stockBillService.getBillOfMonth(wenyBankID,month);
+    public List<StockBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year, int month, int limit, long offset) throws CircuitException {
+        return stockBillService.getBillOfMonth(wenyBankID,year,month,limit,offset);
+    }
+
+
+    @Override
+    public BigDecimal totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID,int year, int month) throws CircuitException {
+        return stockBillService.getTotalInBillOfMonth(wenyBankID,year,month);
     }
 
     @Override
-    public BigDecimal totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return stockBillService.getTotalInBillOfMonth(wenyBankID,month);
-    }
-
-    @Override
-    public BigDecimal totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return stockBillService.totalOutBillOfMonth(wenyBankID,month);
+    public BigDecimal totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year,int month) throws CircuitException {
+        return stockBillService.totalOutBillOfMonth(wenyBankID,year,month);
     }
 
     @Override

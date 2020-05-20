@@ -8,11 +8,11 @@ import java.util.List;
 public interface IStockBillService {
     List<StockBill> pageBill(String wenyBankID, int limit, long offset);
 
-    List<StockBill> getBillOfMonth(String wenyBankID, int month);
+    List<StockBill> getBillOfMonth(String wenyBankID,  int year, int month, int limit, long offset);
 
-    BigDecimal getTotalInBillOfMonth(String wenyBankID, int month);
+    BigDecimal getTotalInBillOfMonth(String wenyBankID, int year,int month);
 
-    BigDecimal totalOutBillOfMonth(String wenyBankID, int month);
+    BigDecimal totalOutBillOfMonth(String wenyBankID, int year,int month);
 
     BigDecimal totalInBillOfYear(String wenyBankID, int year);
 

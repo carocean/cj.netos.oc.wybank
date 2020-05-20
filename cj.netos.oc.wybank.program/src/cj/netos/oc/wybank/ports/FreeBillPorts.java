@@ -21,18 +21,19 @@ public class FreeBillPorts implements IFreeBillPorts {
     }
 
     @Override
-    public List<FreeBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return freeBillService.getBillOfMonth(wenyBankID,month);
+    public List<FreeBill> getBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year, int month, int limit, long offset) throws CircuitException {
+        return freeBillService.getBillOfMonth(wenyBankID,year,month,limit,offset);
+    }
+
+
+    @Override
+    public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID,int year, int month) throws CircuitException {
+        return freeBillService.getTotalInBillOfMonth(wenyBankID,year,month);
     }
 
     @Override
-    public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return freeBillService.getTotalInBillOfMonth(wenyBankID,month);
-    }
-
-    @Override
-    public long totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID, int month) throws CircuitException {
-        return freeBillService.totalOutBillOfMonth(wenyBankID,month);
+    public long totalOutBillOfMonth(ISecuritySession securitySession, String wenyBankID,int year, int month) throws CircuitException {
+        return freeBillService.totalOutBillOfMonth(wenyBankID,year,month);
     }
 
     @Override

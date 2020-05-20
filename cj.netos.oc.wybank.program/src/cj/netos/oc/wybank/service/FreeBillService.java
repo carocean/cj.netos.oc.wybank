@@ -26,22 +26,21 @@ public class FreeBillService implements IFreeBillService {
 
     @CjTransaction
     @Override
-    public List<FreeBill> getBillOfMonth(String wenyBankID, int month) {
-        FreeBillExample example = new FreeBillExample();
-        example.createCriteria().andMonthEqualTo(month);
-        return freeBillMapper.selectByExample(example);
+    public List<FreeBill> getBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
+        return freeBillMapper.getBillOfMonth(wenyBankID, year, month, limit, offset);
+    }
+
+
+    @CjTransaction
+    @Override
+    public long getTotalInBillOfMonth(String wenyBankID, int year, int month) {
+        return freeBillMapper.totalInBillOfMonth(wenyBankID, year, month);
     }
 
     @CjTransaction
     @Override
-    public long getTotalInBillOfMonth(String wenyBankID, int month) {
-        return freeBillMapper.totalInBillOfMonth(wenyBankID, month);
-    }
-
-    @CjTransaction
-    @Override
-    public long totalOutBillOfMonth(String wenyBankID, int month) {
-        return freeBillMapper.totalOutBillOfMonth(wenyBankID, month);
+    public long totalOutBillOfMonth(String wenyBankID, int year, int month) {
+        return freeBillMapper.totalOutBillOfMonth(wenyBankID, year, month);
     }
 
     @CjTransaction

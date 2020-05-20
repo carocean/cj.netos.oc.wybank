@@ -405,29 +405,48 @@
     order by ctime desc
     limit #{offset},#{limit}
   </select>
-
+  <select id="getBillOfMonth" parameterType="cj.netos.oc.wybank.model.FreeBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from free_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `year` = #{year,jdbcType=INTEGER}
+    and `month` = #{month,jdbcType=INTEGER}
+    order by ctime desc
+    limit #{offset},#{limit}
+  </select>
   <select id="totalInBillOfMonth" parameterType="cj.netos.oc.wybank.model.FreeBill" resultType="long">
     select
     IFNULL(sum(amount),0)
     from free_bill
-    where bankid = #{bankid,jdbcType=VARCHAR} and month =#{month} and 'order'=0
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and month =#{month}
+    and `year` = #{year,jdbcType=INTEGER}
+    and 'order'=0
   </select>
   <select id="totalOutBillOfMonth" parameterType="cj.netos.oc.wybank.model.FreeBill" resultType="long">
     select
     IFNULL(sum(amount),0)
     from free_bill
-    where bankid = #{bankid,jdbcType=VARCHAR} and month =#{month} and ('order'=1 or 'order'=2)
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `year` = #{year,jdbcType=INTEGER}
+    and month =#{month}
+    and ('order'=1 or 'order'=2)
   </select>
   <select id="totalInBillOfYear" parameterType="cj.netos.oc.wybank.model.FreeBill" resultType="long">
     select
     IFNULL(sum(amount),0)
     from free_bill
-    where bankid = #{bankid,jdbcType=VARCHAR} and year =#{year} and ('order'=0)
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and year =#{year}
+    and ('order'=0)
   </select>
   <select id="totalOutBillOfYear" parameterType="cj.netos.oc.wybank.model.FreeBill" resultType="long">
     select
     IFNULL(sum(amount),0)
     from free_bill
-    where bankid = #{bankid,jdbcType=VARCHAR} and year =#{year} and ('order'=1 or 'order'=2)
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and year =#{year}
+    and ('order'=1 or 'order'=2)
   </select>
 </mapper>

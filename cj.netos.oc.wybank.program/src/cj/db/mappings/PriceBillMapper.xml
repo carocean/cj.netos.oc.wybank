@@ -412,4 +412,34 @@
       `year` = #{year,jdbcType=INTEGER}
     where sn = #{sn,jdbcType=VARCHAR}
   </update>
+
+  <select id="pagePriceBill" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    order by ctime desc
+    limit #{offset},#{limit}
+  </select>
+  <select id="getPriceBillOfMonth" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `year` = #{year,jdbcType=INTEGER}
+    and `month` = #{month,jdbcType=INTEGER}
+    order by ctime desc
+    limit #{offset},#{limit}
+  </select>
+  <select id="getPriceBillOfDay" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `year` = #{year,jdbcType=INTEGER}
+    and `month` = #{month,jdbcType=INTEGER}
+    and `day` = #{day,jdbcType=INTEGER}
+    order by ctime desc
+    limit #{offset},#{limit}
+  </select>
 </mapper>
