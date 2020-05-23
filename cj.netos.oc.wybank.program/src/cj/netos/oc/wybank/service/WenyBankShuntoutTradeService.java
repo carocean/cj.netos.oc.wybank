@@ -3,7 +3,7 @@ package cj.netos.oc.wybank.service;
 import cj.netos.oc.wybank.IBucketService;
 import cj.netos.oc.wybank.IWenyBankShuntoutTradeService;
 import cj.netos.oc.wybank.bo.ShuntoutBO;
-import cj.netos.oc.wybank.bo.model.ShuntRecord;
+import cj.netos.oc.wybank.extern.model.ShuntRecord;
 import cj.netos.oc.wybank.mapper.*;
 import cj.netos.oc.wybank.model.FreeBill;
 import cj.netos.oc.wybank.model.FreeBucket;

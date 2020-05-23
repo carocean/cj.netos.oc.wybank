@@ -4,6 +4,7 @@ import cj.netos.oc.wybank.IBucketService;
 import cj.netos.oc.wybank.IWenyBankExchangeTradeService;
 import cj.netos.oc.wybank.bo.ExchangeWenyBO;
 import cj.netos.oc.wybank.bo.model.*;
+import cj.netos.oc.wybank.extern.model.ExchangeRecord;
 import cj.netos.oc.wybank.mapper.FreezenBillMapper;
 import cj.netos.oc.wybank.mapper.FundBillMapper;
 import cj.netos.oc.wybank.mapper.PriceBillMapper;

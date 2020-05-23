@@ -1,7 +1,7 @@
 package cj.netos.oc.wybank.bo;
 
 
-import cj.netos.oc.wybank.bo.model.ExchangeRecord;
+import cj.netos.oc.wybank.extern.model.ExchangeRecord;
 
 public class ExchangeWenyBO {
     String exchanger;

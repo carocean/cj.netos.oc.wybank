@@ -1,6 +1,9 @@
 package cj.netos.oc.wybank.openports;
 
 import cj.netos.oc.wybank.bo.*;
+import cj.netos.oc.wybank.result.ExchangeResponse;
+import cj.netos.oc.wybank.result.PurchaseResponse;
+import cj.netos.oc.wybank.result.ShuntoutResponse;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.openport.AccessTokenIn;
 import cj.studio.openport.IOpenportService;

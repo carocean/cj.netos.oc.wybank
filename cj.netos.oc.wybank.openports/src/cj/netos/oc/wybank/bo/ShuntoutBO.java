@@ -1,7 +1,7 @@
 package cj.netos.oc.wybank.bo;
 
 
-import cj.netos.oc.wybank.bo.model.ShuntRecord;
+import cj.netos.oc.wybank.extern.model.ShuntRecord;
 
 public class ShuntoutBO {
     String operator;

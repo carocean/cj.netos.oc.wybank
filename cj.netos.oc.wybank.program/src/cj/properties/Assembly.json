@@ -10,6 +10,16 @@
 					packages:"[
 					]"
 				}
+			},
+			{
+				name:"curator",
+				class:"cj.studio.orm.curator.CuratorPlugin",
+				parameters:{
+					connectString: "172.31.210.92:2181,172.31.210.92:2182,172.31.210.92:2183",
+					sessionTimeoutMs: "500000",
+					connectionTimeoutMs: "500000",
+					retryIntervalMs: "5000"
+				}
 			}
 		],
 		activators: [
@@ -45,7 +55,7 @@
 	serviceContainer : {
 		name : "netContainer",
 		switchFilter:"off",
-		monitor: "",
+		monitor: "cj.netos.rabbitmq.DefaultRabbitMQMonitor",
 		jss:[{
 			module:"services1",
 			package:"cj.netos.oc.wybank.jss",
@@ -63,6 +73,10 @@
 			exoterical:"true"
 		},{
 			package : "cj.netos.oc.wybank.service",
+			extName : ".class|.json|.xml",
+			exoterical:"true"
+		},{
+			package : "cj.netos.oc.wybank.cmd",
 			extName : ".class|.json|.xml",
 			exoterical:"true"
 		},{

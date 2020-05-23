@@ -1,7 +1,7 @@
 package cj.netos.oc.wybank.bo;
 
 
-import cj.netos.oc.wybank.bo.model.PurchaseRecord;
+import cj.netos.oc.wybank.extern.model.PurchaseRecord;
 
 public class PurchaseWenyBO {
     String purchaser;
