@@ -1,14 +1,18 @@
 package cj.netos.oc.wybank.service;
 
 import cj.netos.oc.wybank.IBucketService;
-import cj.netos.oc.wybank.bo.model.*;
 import cj.netos.oc.wybank.mapper.*;
 import cj.netos.oc.wybank.model.*;
+import cj.netos.rabbitmq.IRabbitMQProducer;
+import cj.studio.ecm.CJSystem;
 import cj.studio.ecm.annotation.CjBridge;
 import cj.studio.ecm.annotation.CjService;
 import cj.studio.ecm.annotation.CjServiceRef;
+import cj.studio.ecm.net.CircuitException;
 import cj.studio.openport.util.Encript;
 import cj.studio.orm.mybatis.annotation.CjTransaction;
+import cj.ultimate.gson2.com.google.gson.Gson;
+import com.rabbitmq.client.AMQP;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -29,6 +33,9 @@ public class BucketService implements IBucketService {
     FreeBucketMapper freeBucketMapper;
     @CjServiceRef(refByName = "mybatis.cj.netos.oc.wybank.mapper.StockBucketMapper")
     StockBucketMapper stockBucketMapper;
+
+    @CjServiceRef(refByName = "@.rabbitmq.producer.price_notify")
+    IRabbitMQProducer rabbitMQProducer;
 
     @CjTransaction
     @Override
@@ -148,6 +155,22 @@ public class BucketService implements IBucketService {
     @Override
     public void updatePriceBucket(String bankid, BigDecimal afterPrice) {
         priceBucketMapper.updatePrice(afterPrice, bankid);
+
+        AMQP.BasicProperties properties = new AMQP.BasicProperties().builder()
+                .type("/notify/price.ports")
+                .headers(new HashMap() {
+                    {
+                        put("command", "update");
+                    }
+                }).build();
+        try {
+            Map<String, Object> map = new HashMap<>();
+            map.put("bankid", bankid);
+            map.put("price", afterPrice);
+            rabbitMQProducer.publish("price_effector", properties, new Gson().toJson(map).getBytes());
+        } catch (CircuitException e) {
+            CJSystem.logging().error(getClass(), e);
+        }
     }
 
     @CjTransaction
@@ -165,30 +188,30 @@ public class BucketService implements IBucketService {
     @CjTransaction
     @Override
     public List<StockBucket> pageStockBucket(int limit, long offset) {
-        return stockBucketMapper.page(limit,offset);
+        return stockBucketMapper.page(limit, offset);
     }
 
     @CjTransaction
     @Override
     public List<FreeBucket> pageFreeBucket(int limit, long offset) {
-        return freeBucketMapper.page(limit,offset);
+        return freeBucketMapper.page(limit, offset);
     }
 
     @CjTransaction
     @Override
     public List<FreezenBucket> pageFreezenBucket(int limit, long offset) {
-        return freezenBucketMapper.page(limit,offset);
+        return freezenBucketMapper.page(limit, offset);
     }
 
     @CjTransaction
     @Override
     public List<FundBucket> pageFundBucket(int limit, long offset) {
-        return fundBucketMapper.page(limit,offset);
+        return fundBucketMapper.page(limit, offset);
     }
 
     @CjTransaction
     @Override
     public List<PriceBucket> pagePriceBucket(int limit, long offset) {
-        return priceBucketMapper.page(limit,offset);
+        return priceBucketMapper.page(limit, offset);
     }
 }
