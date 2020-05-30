@@ -122,7 +122,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
 
-        freezenBill.setBalance(freezenBucket.getAmount() + freezenBill.getAmount());
+        freezenBill.setBalance(freezenBucket.getAmount() - freezenBill.getAmount());
 
         freezenBillMapper.insert(freezenBill);
 
@@ -152,7 +152,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         FundBucket fundBucket = bucketService.getAndInitFundBucket(record.getBankid());
 
-        fundBill.setBalance(fundBucket.getAmount() + fundBill.getAmount());
+        fundBill.setBalance(fundBucket.getAmount() - fundBill.getAmount());
 
         fundBillMapper.insert(fundBill);
 
@@ -182,7 +182,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
 
-        BigDecimal balance = stockBucket.getStock().add(stockBill.getStock()).setScale(14, RoundingMode.HALF_DOWN);
+        BigDecimal balance = stockBucket.getStock().subtract(stockBill.getStock()).setScale(14, RoundingMode.HALF_DOWN);
         stockBill.setBalance(balance);
 
         stockBillMapper.insert(stockBill);

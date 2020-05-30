@@ -3,7 +3,6 @@ package cj.netos.oc.wybank.service;
 import cj.netos.oc.wybank.IBucketService;
 import cj.netos.oc.wybank.IWenyBankPurchaseTradeService;
 import cj.netos.oc.wybank.bo.PurchaseWenyBO;
-import cj.netos.oc.wybank.bo.model.*;
 import cj.netos.oc.wybank.extern.model.PurchaseRecord;
 import cj.netos.oc.wybank.mapper.*;
 import cj.netos.oc.wybank.model.*;
