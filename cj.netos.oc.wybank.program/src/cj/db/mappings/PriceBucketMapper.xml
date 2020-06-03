@@ -188,12 +188,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cj.netos.oc.wybank.model.PriceBucket">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    update shunter_rule
-    set subject = #{subject,jdbcType=VARCHAR},
-      person = #{person,jdbcType=VARCHAR},
-      ratio = #{ratio,jdbcType=DECIMAL},
-      bankid = #{bankid,jdbcType=VARCHAR},
-      `alias` = #{alias,jdbcType=VARCHAR}
+    update price_bucket
+    set bankid = #{bankid,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
