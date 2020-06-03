@@ -75,5 +75,6 @@ public interface FundBillMapper {
 
     List<FundBill> getBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
-
+    long totalPurchaseFundOfDay(@Param(value = "bankid") String bankid,@Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+    long totalExchangeFundOfDay(@Param(value = "bankid") String bankid,@Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
 }

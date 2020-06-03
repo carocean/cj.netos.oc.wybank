@@ -67,4 +67,23 @@ public interface IFundBillPorts extends IOpenportService {
             @CjOpenportParameter(usage = "纹银银行号", name = "wenyBankID") String wenyBankID,
             @CjOpenportParameter(usage = "年份。", name = "year") int year
     ) throws CircuitException;
+
+    @CjOpenportAppSecurity
+    @CjOpenport(usage = "获取指定日的申购总金额", tokenIn = AccessTokenIn.nope)
+    long totalPurchaseFundOfDay(ISecuritySession securitySession,
+                                @CjOpenportParameter(usage = "纹银银行号", name = "wenyBankID") String wenyBankID,
+                                @CjOpenportParameter(usage = "年份。", name = "year") int year,
+                                @CjOpenportParameter(usage = "月份。（java特性，实际用份减1）", name = "month") int month,
+                                @CjOpenportParameter(usage = "天。", name = "day") int day
+    ) throws CircuitException;
+
+
+    @CjOpenportAppSecurity
+    @CjOpenport(usage = "获取指定日的承兑总金额", tokenIn = AccessTokenIn.nope)
+    long totalExchangeFundOfDay(ISecuritySession securitySession,
+                                @CjOpenportParameter(usage = "纹银银行号", name = "wenyBankID") String wenyBankID,
+                                @CjOpenportParameter(usage = "年份。", name = "year") int year,
+                                @CjOpenportParameter(usage = "月份。（java特性，实际用份减1）", name = "month") int month,
+                                @CjOpenportParameter(usage = "天。", name = "day") int day
+    ) throws CircuitException;
 }

@@ -54,4 +54,16 @@ public class FundBillService implements IFundBillService {
     public long totalOutBillOfYear(String wenyBankID, int year) {
         return fundBillMapper.totalOutBillOfYear(wenyBankID, year);
     }
+
+    @CjTransaction
+    @Override
+    public long totalPurchaseFundOfDay(String wenyBankID,int year, int month,int day) {
+        return fundBillMapper.totalPurchaseFundOfDay(wenyBankID,year, month,day);
+    }
+
+    @CjTransaction
+    @Override
+    public long totalExchangeFundOfDay(String wenyBankID,int year, int month,int day) {
+        return fundBillMapper.totalExchangeFundOfDay(wenyBankID,year, month,day);
+    }
 }

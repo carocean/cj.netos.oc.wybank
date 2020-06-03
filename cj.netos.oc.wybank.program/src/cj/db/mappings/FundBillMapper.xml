@@ -425,6 +425,26 @@
     and month =#{month}
     and 'order'=0
   </select>
+  <select id="totalPurchaseFundOfDay" parameterType="cj.netos.oc.wybank.model.FundBill" resultType="long">
+    select
+    IFNULL(sum(amount),0)
+    from fund_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `year` = #{year,jdbcType=INTEGER}
+    and month =#{month}
+    and day =#{day}
+    and 'order'=0
+  </select>
+  <select id="totalExchangeFundOfDay" parameterType="cj.netos.oc.wybank.model.FundBill" resultType="long">
+    select
+    IFNULL(sum(amount),0)
+    from fund_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `year` = #{year,jdbcType=INTEGER}
+    and month =#{month}
+    and day =#{day}
+    and 'order'=1
+  </select>
   <select id="totalOutBillOfMonth" parameterType="cj.netos.oc.wybank.model.FundBill" resultType="long">
     select
     IFNULL(sum(amount),0)

@@ -2,6 +2,7 @@ package cj.netos.oc.wybank;
 
 import cj.netos.oc.wybank.model.FreezenBill;
 import cj.netos.oc.wybank.model.FundBill;
+import cj.studio.orm.mybatis.annotation.CjTransaction;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface IFundBillService {
     long totalInBillOfYear(String wenyBankID, int year);
 
     long totalOutBillOfYear(String wenyBankID, int year);
+
+    long totalPurchaseFundOfDay(String wenyBankID, int year, int month, int day);
+
+    long totalExchangeFundOfDay(String wenyBankID, int year, int month, int day);
 }
