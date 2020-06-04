@@ -70,4 +70,6 @@ public interface PriceBillMapper {
 
     List<PriceBill> getPriceBillOfDay(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
+    List<PriceBill> getAfterTimePriceBill(@Param(value = "bankid") String bankid,@Param(value = "ctime") String ctime);
+
 }

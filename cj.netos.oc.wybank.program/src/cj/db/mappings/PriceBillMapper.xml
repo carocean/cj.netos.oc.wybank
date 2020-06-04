@@ -412,7 +412,14 @@
       `year` = #{year,jdbcType=INTEGER}
     where sn = #{sn,jdbcType=VARCHAR}
   </update>
-
+  <select id="getAfterTimePriceBill" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and ctime &gt; #{ctime}
+    order by ctime desc
+  </select>
   <select id="pagePriceBill" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

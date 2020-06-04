@@ -21,6 +21,11 @@ public class PriceBillPorts implements IPriceBillPorts {
     }
 
     @Override
+    public List<PriceBill> getAfterTimePriceBill(ISecuritySession securitySession, String wenyBankID, String ctime) throws CircuitException {
+        return priceBillService.getAfterTimePriceBill(wenyBankID,ctime);
+    }
+
+    @Override
     public List<PriceBill> getPriceBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year, int month, int limit, long offset) throws CircuitException {
         return priceBillService.getPriceBillOfMonth(wenyBankID, year, month, limit, offset);
     }

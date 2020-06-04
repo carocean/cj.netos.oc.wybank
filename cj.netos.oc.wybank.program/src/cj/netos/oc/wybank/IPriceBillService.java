@@ -11,4 +11,6 @@ public interface IPriceBillService {
 
     List<PriceBill> getPriceBillOfDay(String wenyBankID, int year, int month, int day, int limit, long offset);
 
+    List<PriceBill> getAfterTimePriceBill(String wenyBankID, String ctime);
+
 }

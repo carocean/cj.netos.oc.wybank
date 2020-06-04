@@ -22,6 +22,12 @@ public class PriceBillService implements IPriceBillService {
 
     @CjTransaction
     @Override
+    public List<PriceBill> getAfterTimePriceBill(String wenyBankID, String ctime) {
+        return priceBillMapper.getAfterTimePriceBill(wenyBankID,ctime);
+    }
+
+    @CjTransaction
+    @Override
     public List<PriceBill> getPriceBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
         return priceBillMapper.getPriceBillOfMonth(wenyBankID, year, month, limit, offset);
     }

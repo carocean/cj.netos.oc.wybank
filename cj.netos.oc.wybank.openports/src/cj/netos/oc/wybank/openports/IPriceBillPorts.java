@@ -24,6 +24,13 @@ public interface IPriceBillPorts extends IOpenportService {
     ) throws CircuitException;
 
     @CjOpenportAppSecurity
+    @CjOpenport(usage = "取时间之后的价格清单", tokenIn = AccessTokenIn.nope)
+    List<PriceBill> getAfterTimePriceBill(ISecuritySession securitySession,
+                                          @CjOpenportParameter(usage = "纹银银行号", name = "wenyBankID") String wenyBankID,
+                                          @CjOpenportParameter(usage = "创建时间", name = "ctime") String ctime
+    ) throws CircuitException;
+
+    @CjOpenportAppSecurity
     @CjOpenport(usage = "按月获取价格单", tokenIn = AccessTokenIn.nope)
     List<PriceBill> getPriceBillOfMonth(ISecuritySession securitySession,
                                         @CjOpenportParameter(usage = "纹银银行号", name = "wenyBankID") String wenyBankID,
