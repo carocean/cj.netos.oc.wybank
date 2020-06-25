@@ -1,6 +1,7 @@
 package cj.netos.oc.wybank.openports;
 
 import cj.netos.oc.wybank.model.PriceBill;
+import cj.netos.oc.wybank.result.BulletinBoard;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.openport.AccessTokenIn;
 import cj.studio.openport.IOpenportService;
@@ -51,4 +52,13 @@ public interface IPriceBillPorts extends IOpenportService {
                                       @CjOpenportParameter(usage = "当前记录位置", name = "offset") long offset
     ) throws CircuitException;
 
+    @CjOpenportAppSecurity
+    @CjOpenport(usage = "获取公告板，有昨收及今开价格。如果昨收没有则为0.001", tokenIn = AccessTokenIn.nope)
+    BulletinBoard getBulletinBoard(
+            ISecuritySession securitySession,
+            @CjOpenportParameter(usage = "纹银银行号", name = "wenyBankID") String wenyBankID,
+            @CjOpenportParameter(usage = "年", name = "year") int year,
+            @CjOpenportParameter(usage = "月份。（java特性，实际用份减1）", name = "month") int month,
+            @CjOpenportParameter(usage = "日", name = "day") int day
+    ) throws CircuitException;
 }

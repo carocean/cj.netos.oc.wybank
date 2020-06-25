@@ -3,6 +3,7 @@ package cj.netos.oc.wybank.ports;
 import cj.netos.oc.wybank.IPriceBillService;
 import cj.netos.oc.wybank.model.PriceBill;
 import cj.netos.oc.wybank.openports.IPriceBillPorts;
+import cj.netos.oc.wybank.result.BulletinBoard;
 import cj.studio.ecm.annotation.CjService;
 import cj.studio.ecm.annotation.CjServiceRef;
 import cj.studio.ecm.net.CircuitException;
@@ -33,5 +34,10 @@ public class PriceBillPorts implements IPriceBillPorts {
     @Override
     public List<PriceBill> getPriceBillOfDay(ISecuritySession securitySession, String wenyBankID, int year, int month, int day, int limit, long offset) throws CircuitException {
         return priceBillService.getPriceBillOfDay(wenyBankID, year, month, day, limit, offset);
+    }
+
+    @Override
+    public BulletinBoard getBulletinBoard(ISecuritySession securitySession, String wenyBankID, int year, int month, int day) throws CircuitException {
+        return priceBillService.getBulletinBoard(wenyBankID, year, month, day);
     }
 }

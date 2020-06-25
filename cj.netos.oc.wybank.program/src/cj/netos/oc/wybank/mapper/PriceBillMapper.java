@@ -72,4 +72,8 @@ public interface PriceBillMapper {
 
     List<PriceBill> getAfterTimePriceBill(@Param(value = "bankid") String bankid,@Param(value = "ctime") String ctime);
 
+    PriceBill getOpenPrice(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+
+    PriceBill getClosePrice(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+
 }

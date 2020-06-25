@@ -449,4 +449,26 @@
     order by ctime desc
     limit #{offset},#{limit}
   </select>
+  <select id="getClosePrice" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+      and `year` = #{year,jdbcType=INTEGER}
+      and `month` = #{month,jdbcType=INTEGER}
+      and `day` = #{day,jdbcType=INTEGER}
+    order by ctime desc
+    limit 1
+  </select>
+  <select id="getOpenPrice" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+      and `year` = #{year,jdbcType=INTEGER}
+      and `month` = #{month,jdbcType=INTEGER}
+      and `day` = #{day,jdbcType=INTEGER}
+    order by ctime asc
+    limit 1
+  </select>
 </mapper>
