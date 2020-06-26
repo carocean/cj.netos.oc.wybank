@@ -17,4 +17,7 @@ public interface IStockBillService {
     BigDecimal totalInBillOfYear(String wenyBankID, int year);
 
     BigDecimal totalOutBillOfYear(String wenyBankID, int year);
+
+    List<StockBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset);
+
 }

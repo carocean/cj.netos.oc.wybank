@@ -75,4 +75,6 @@ public interface StockBillMapper {
     BigDecimal totalOutBillOfYear(@Param(value = "bankid") String bankid, @Param(value = "year") int year);
     List<StockBill> getBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
+    List<StockBill> pageBillOfMonth(@Param(value = "bankid") String bankid,@Param(value = "order") int order, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
 }

@@ -60,7 +60,7 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         bill.setAmount(realAmount);
         bill.setBalance(fundBucket.getAmount() - realAmount);
         bill.setRefsn(record.getSn());
-        bill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        bill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         bill.setNote(record.getNote());
         bill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
@@ -88,7 +88,7 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         bill.setAmount(realAmount);
         bill.setBalance(freeBucket.getAmount() - realAmount);
         bill.setRefsn(record.getSn());
-        bill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        bill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         bill.setNote(record.getNote());
         bill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 

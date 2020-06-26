@@ -24,23 +24,29 @@ public class FundBillService implements IFundBillService {
     public List<FundBill> pageBill(String wenyBankID, int limit, long offset) {
         return fundBillMapper.page(wenyBankID, limit, offset);
     }
+
     @CjTransaction
     @Override
     public List<FundBill> getBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
-        return fundBillMapper.getBillOfMonth(wenyBankID,year,month,limit,offset);
-    }
-
-
-    @CjTransaction
-    @Override
-    public long getTotalInBillOfMonth(String wenyBankID,int year, int month) {
-        return fundBillMapper.totalInBillOfMonth(wenyBankID,year, month);
+        return fundBillMapper.getBillOfMonth(wenyBankID, year, month, limit, offset);
     }
 
     @CjTransaction
     @Override
-    public long totalOutBillOfMonth(String wenyBankID,int year, int month) {
-        return fundBillMapper.totalOutBillOfMonth(wenyBankID,year, month);
+    public List<FundBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset) {
+        return fundBillMapper.pageBillOfMonth(wenyBankID, order, year, month, limit, offset);
+    }
+
+    @CjTransaction
+    @Override
+    public long getTotalInBillOfMonth(String wenyBankID, int year, int month) {
+        return fundBillMapper.totalInBillOfMonth(wenyBankID, year, month);
+    }
+
+    @CjTransaction
+    @Override
+    public long totalOutBillOfMonth(String wenyBankID, int year, int month) {
+        return fundBillMapper.totalOutBillOfMonth(wenyBankID, year, month);
     }
 
     @CjTransaction
@@ -57,13 +63,13 @@ public class FundBillService implements IFundBillService {
 
     @CjTransaction
     @Override
-    public long totalPurchaseFundOfDay(String wenyBankID,int year, int month,int day) {
-        return fundBillMapper.totalPurchaseFundOfDay(wenyBankID,year, month,day);
+    public long totalPurchaseFundOfDay(String wenyBankID, int year, int month, int day) {
+        return fundBillMapper.totalPurchaseFundOfDay(wenyBankID, year, month, day);
     }
 
     @CjTransaction
     @Override
-    public long totalExchangeFundOfDay(String wenyBankID,int year, int month,int day) {
-        return fundBillMapper.totalExchangeFundOfDay(wenyBankID,year, month,day);
+    public long totalExchangeFundOfDay(String wenyBankID, int year, int month, int day) {
+        return fundBillMapper.totalExchangeFundOfDay(wenyBankID, year, month, day);
     }
 }

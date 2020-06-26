@@ -29,6 +29,11 @@ public class StockBillService implements IStockBillService {
     public List<StockBill> getBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
         return stockBillMapper.getBillOfMonth(wenyBankID,year,month,limit,offset);
     }
+    @CjTransaction
+    @Override
+    public List<StockBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset) {
+        return stockBillMapper.pageBillOfMonth(wenyBankID,order,year,month,limit,offset);
+    }
 
     @CjTransaction
     @Override

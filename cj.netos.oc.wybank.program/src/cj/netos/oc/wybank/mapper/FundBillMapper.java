@@ -65,9 +65,9 @@ public interface FundBillMapper {
 
     List<FundBill> page(@Param(value = "bankid") String bankid, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
-    long totalInBillOfMonth(@Param(value = "bankid") String bankid,@Param(value = "year") int year, @Param(value = "month") int month);
+    long totalInBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month);
 
-    long totalOutBillOfMonth(@Param(value = "bankid") String bankid,@Param(value = "year") int year, @Param(value = "month") int month);
+    long totalOutBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month);
 
     long totalInBillOfYear(@Param(value = "bankid") String bankid, @Param(value = "year") int year);
 
@@ -75,6 +75,10 @@ public interface FundBillMapper {
 
     List<FundBill> getBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
-    long totalPurchaseFundOfDay(@Param(value = "bankid") String bankid,@Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
-    long totalExchangeFundOfDay(@Param(value = "bankid") String bankid,@Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+    long totalPurchaseFundOfDay(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+
+    long totalExchangeFundOfDay(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+
+    List<FundBill> pageBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "order") int order, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
 }

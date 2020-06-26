@@ -22,4 +22,7 @@ public interface IFundBillService {
     long totalPurchaseFundOfDay(String wenyBankID, int year, int month, int day);
 
     long totalExchangeFundOfDay(String wenyBankID, int year, int month, int day);
+
+    List<FundBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset);
+
 }

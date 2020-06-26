@@ -56,7 +56,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         PriceBill priceBill = new PriceBill();
         priceBill.setPrice(priceBucket.getPrice());
         priceBill.setBankid(record.getBankid());
-        priceBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        priceBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         priceBill.setNote(record.getNote());
         priceBill.setOrder(0);
         priceBill.setParticipant(record.getPurchaser());
@@ -93,7 +93,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         StockBill stockBill = new StockBill();
         stockBill.setStock(stock);
         stockBill.setBankid(record.getBankid());
-        stockBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        stockBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         stockBill.setNote(record.getNote());
         stockBill.setOrder(0);
         stockBill.setParticipant(record.getPurchaser());
@@ -129,7 +129,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         FreeBill freeBill = new FreeBill();
         freeBill.setAmount(record.getFreeAmount());
         freeBill.setBankid(record.getBankid());
-        freeBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        freeBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         freeBill.setNote(record.getNote());
         freeBill.setOrder(0);
         freeBill.setParticipant(record.getPurchaser());
@@ -160,7 +160,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         FreezenBill freezenBill = new FreezenBill();
         freezenBill.setAmount(freezenAmount);
         freezenBill.setBankid(record.getBankid());
-        freezenBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        freezenBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         freezenBill.setNote(record.getNote());
         freezenBill.setOrder(0);
         freezenBill.setParticipant(record.getPurchaser());
@@ -190,7 +190,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
         FundBill fundBill = new FundBill();
         fundBill.setAmount(record.getAmount());
         fundBill.setBankid(record.getBankid());
-        fundBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        fundBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         fundBill.setNote(record.getNote());
         fundBill.setOrder(0);
         fundBill.setParticipant(record.getPurchaser());

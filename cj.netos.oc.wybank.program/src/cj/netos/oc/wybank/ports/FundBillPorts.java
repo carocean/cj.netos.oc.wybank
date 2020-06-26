@@ -26,6 +26,11 @@ public class FundBillPorts implements IFundBillPorts {
     }
 
     @Override
+    public List<FundBill> pageBillOfMonth(ISecuritySession securitySession, String wenyBankID, int order, int year, int month, int limit, long offset) throws CircuitException {
+        return fundBillService.pageBillOfMonth(wenyBankID,order, year, month, limit, offset);
+    }
+
+    @Override
     public long totalInBillOfMonth(ISecuritySession securitySession, String wenyBankID, int year, int month) throws CircuitException {
         return fundBillService.getTotalInBillOfMonth(wenyBankID, year, month);
     }

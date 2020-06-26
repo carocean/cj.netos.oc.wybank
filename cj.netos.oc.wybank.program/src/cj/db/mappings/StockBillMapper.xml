@@ -416,6 +416,17 @@
     order by ctime desc
     limit #{offset},#{limit}
   </select>
+  <select id="pageBillOfMonth" parameterType="cj.netos.oc.wybank.model.StockBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from stock_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and `order` = #{order,jdbcType=INTEGER}
+    and `year` = #{year,jdbcType=INTEGER}
+    and `month` = #{month,jdbcType=INTEGER}
+    order by ctime desc
+    limit #{offset},#{limit}
+  </select>
   <select id="totalInBillOfMonth" parameterType="cj.netos.oc.wybank.model.StockBill" resultType="java.math.BigDecimal">
     select
      sum(IFNULL(stock,0.00))

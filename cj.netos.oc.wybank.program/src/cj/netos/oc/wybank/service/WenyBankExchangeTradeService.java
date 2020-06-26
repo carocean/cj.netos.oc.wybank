@@ -67,7 +67,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         PriceBill priceBill = new PriceBill();
         priceBill.setPrice(priceBucket.getPrice());
         priceBill.setBankid(record.getBankid());
-        priceBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        priceBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         priceBill.setNote(record.getNote());
         priceBill.setOrder(1);
         priceBill.setParticipant(record.getExchanger());
@@ -103,7 +103,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         FreezenBill freezenBill = new FreezenBill();
         freezenBill.setAmount(payableAmount * -1);
         freezenBill.setBankid(record.getBankid());
-        freezenBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        freezenBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         freezenBill.setNote(record.getNote());
         freezenBill.setOrder(1);
         freezenBill.setParticipant(record.getExchanger());
@@ -133,7 +133,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         FundBill fundBill = new FundBill();
         fundBill.setAmount(payableAmount * -1);
         fundBill.setBankid(record.getBankid());
-        fundBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        fundBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         fundBill.setNote(record.getNote());
         fundBill.setOrder(1);
         fundBill.setParticipant(record.getExchanger());
@@ -163,7 +163,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         StockBill stockBill = new StockBill();
         stockBill.setStock(record.getStock().multiply(new BigDecimal("-1.0")).setScale(14, RoundingMode.HALF_DOWN));
         stockBill.setBankid(record.getBankid());
-        stockBill.setCtime(BankUtils.dateTimeToSecond(System.currentTimeMillis()));
+        stockBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         stockBill.setNote(record.getNote());
         stockBill.setOrder(1);
         stockBill.setParticipant(record.getExchanger());
