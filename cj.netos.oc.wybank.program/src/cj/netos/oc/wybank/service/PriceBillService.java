@@ -51,8 +51,8 @@ public class PriceBillService implements IPriceBillService {
         calendar.add(Calendar.DATE, -1);
         PriceBill closePrice = priceBillMapper.getClosePrice(wenyBankID, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
         BulletinBoard bulletinBoard = new BulletinBoard();
-        bulletinBoard.setOpenPrice(openPrice == null ? new BigDecimal("0.001") : openPrice.getPrice());
         bulletinBoard.setClosePrice(closePrice == null ? new BigDecimal("0.001") : closePrice.getPrice());
+        bulletinBoard.setOpenPrice(openPrice == null ? bulletinBoard.getClosePrice() : openPrice.getPrice());
         return bulletinBoard;
     }
 }
