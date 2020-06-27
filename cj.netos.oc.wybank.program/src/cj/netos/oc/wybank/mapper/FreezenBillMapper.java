@@ -65,7 +65,7 @@ public interface FreezenBillMapper {
 
     List<FreezenBill> page(@Param(value = "bankid") String bankid, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
-    long totalInBillOfMonth(@Param(value = "bankid") String bankid,  @Param(value = "year") int year,@Param(value = "month") int month);
+    long totalInBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month);
 
     long totalOutBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month);
 
@@ -75,5 +75,7 @@ public interface FreezenBillMapper {
 
     List<FreezenBill> getBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
+
+    List<FreezenBill> pageBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "order") int order, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
 }

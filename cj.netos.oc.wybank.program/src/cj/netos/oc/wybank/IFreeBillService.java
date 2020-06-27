@@ -16,4 +16,7 @@ public interface IFreeBillService {
     long totalInBillOfYear(String wenyBankID, int year);
 
     long totalOutBillOfYear(String wenyBankID, int year);
+
+    List<FreeBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset);
+
 }

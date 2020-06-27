@@ -29,7 +29,11 @@ public class FreeBillService implements IFreeBillService {
     public List<FreeBill> getBillOfMonth(String wenyBankID, int year, int month, int limit, long offset) {
         return freeBillMapper.getBillOfMonth(wenyBankID, year, month, limit, offset);
     }
-
+    @CjTransaction
+    @Override
+    public List<FreeBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset) {
+        return freeBillMapper.pageBillOfMonth(wenyBankID, order,year, month, limit, offset);
+    }
 
     @CjTransaction
     @Override

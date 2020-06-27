@@ -45,13 +45,17 @@ public class PriceBillService implements IPriceBillService {
     @CjTransaction
     @Override
     public BulletinBoard getBulletinBoard(String wenyBankID, int year, int month, int day) {
-        PriceBill openPrice = priceBillMapper.getOpenPrice(wenyBankID, year, month, day);
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         calendar.add(Calendar.DATE, -1);
         PriceBill closePrice = priceBillMapper.getClosePrice(wenyBankID, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+        if (closePrice == null) {
+            closePrice=priceBillMapper.getBeforePrice(wenyBankID,calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+        }
         BulletinBoard bulletinBoard = new BulletinBoard();
         bulletinBoard.setClosePrice(closePrice == null ? new BigDecimal("0.001") : closePrice.getPrice());
+
+        PriceBill openPrice = priceBillMapper.getOpenPrice(wenyBankID, year, month, day);
         bulletinBoard.setOpenPrice(openPrice == null ? bulletinBoard.getClosePrice() : openPrice.getPrice());
         return bulletinBoard;
     }

@@ -76,4 +76,6 @@ public interface PriceBillMapper {
 
     PriceBill getClosePrice(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
 
+    PriceBill getBeforePrice(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "day") int day);
+
 }

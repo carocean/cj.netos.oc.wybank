@@ -17,4 +17,7 @@ public interface IFreezenBillService {
     long totalInBillOfYear(String wenyBankID, int year);
 
     long totalOutBillOfYear(String wenyBankID, int year);
+
+    List<FreezenBill> pageBillOfMonth(String wenyBankID, int order, int year, int month, int limit, long offset);
+
 }

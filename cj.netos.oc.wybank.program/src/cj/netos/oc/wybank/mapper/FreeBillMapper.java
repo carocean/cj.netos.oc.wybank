@@ -76,4 +76,6 @@ public interface FreeBillMapper {
 
     List<FreeBill> getBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
 
+    List<FreeBill> pageBillOfMonth(@Param(value = "bankid") String bankid, @Param(value = "order") int order, @Param(value = "year") int year, @Param(value = "month") int month, @Param(value = "limit") int limit, @Param(value = "offset") long offset);
+
 }

@@ -460,6 +460,18 @@
     order by ctime desc
     limit 1
   </select>
+  <select id="getBeforePrice" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from price_bill
+    where bankid = #{bankid,jdbcType=VARCHAR}
+    and (   `year` &lt;= #{year,jdbcType=INTEGER}
+            and `month` &lt;= #{month,jdbcType=INTEGER}
+            and `day` &lt;= #{day,jdbcType=INTEGER}
+        )
+    order by ctime desc
+    limit 1
+  </select>
   <select id="getOpenPrice" parameterType="cj.netos.oc.wybank.model.PriceBill" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
