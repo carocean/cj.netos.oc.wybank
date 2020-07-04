@@ -25,7 +25,7 @@ import org.apache.curator.framework.recipes.locks.InterProcessReadWriteLock;
 
 import java.util.HashMap;
 
-@CjConsumer(name = "trade")
+@CjConsumer(name = "fromGateway_receipt_purchase")
 @CjService(name = "/wybank.ports#purchase")
 public class PurchaseWenyCommand implements IConsumerCommand {
     @CjServiceSite
@@ -37,8 +37,8 @@ public class PurchaseWenyCommand implements IConsumerCommand {
     @CjServiceRef
     ICuratorPathChecker curatorPathChecker;
 
-    @CjServiceRef(refByName = "@.rabbitmq.producer.ack")
-    IRabbitMQProducer rabbitMQProducer;
+    @CjServiceRef(refByName = "@.rabbitmq.producer.toGateway_ack_purchase")
+    IRabbitMQProducer toGateway_ack_purchase;
 
     @CjServiceRef
     IWenyBankPurchaseTradeService wenyBankPurchaseTradeService;
@@ -139,7 +139,7 @@ public class PurchaseWenyCommand implements IConsumerCommand {
         } else {
             body = new Gson().toJson(response.getRecord()).getBytes();
         }
-        rabbitMQProducer.publish("gateway", properties, body);
+        toGateway_ack_purchase.publish("gateway", properties, body);
     }
 
 }

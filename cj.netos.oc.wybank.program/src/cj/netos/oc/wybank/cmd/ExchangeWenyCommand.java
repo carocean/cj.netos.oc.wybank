@@ -25,7 +25,7 @@ import org.apache.curator.framework.recipes.locks.InterProcessReadWriteLock;
 
 import java.util.HashMap;
 
-@CjConsumer(name = "trade")
+@CjConsumer(name = "fromGateway_receipt_exchange")
 @CjService(name = "/wybank.ports#exchange")
 public class ExchangeWenyCommand implements IConsumerCommand {
     @CjServiceSite
@@ -37,8 +37,8 @@ public class ExchangeWenyCommand implements IConsumerCommand {
     @CjServiceRef
     ICuratorPathChecker curatorPathChecker;
 
-    @CjServiceRef(refByName = "@.rabbitmq.producer.ack")
-    IRabbitMQProducer ackRabbitMQProducer;
+    @CjServiceRef(refByName = "@.rabbitmq.producer.toGateway_ack_exchange")
+    IRabbitMQProducer toGateway_ack_exchange;
 
     @CjServiceRef
     IWenyBankExchangeTradeService wenyBankExchangeTradeService;
@@ -115,7 +115,7 @@ public class ExchangeWenyCommand implements IConsumerCommand {
         } else {
             body = new Gson().toJson(response.getRecord()).getBytes();
         }
-        ackRabbitMQProducer.publish("gateway",properties, body);
+        toGateway_ack_exchange.publish("gateway",properties, body);
     }
 
     private ExchangeResponse exchange(AMQP.BasicProperties properties, byte[] body)throws CircuitException {

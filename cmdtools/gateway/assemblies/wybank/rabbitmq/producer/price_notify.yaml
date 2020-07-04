@@ -46,6 +46,7 @@ routing:
   routingNodes:
     price_effector:
       title: 价格效应器
+      usage: 用途有：自动承兑器(exchange)等
       castmode: unicast
       routingKeys:
         - node.1
