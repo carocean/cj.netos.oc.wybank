@@ -37,7 +37,7 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         ShuntRecord record = shuntoutBO.getRecord();
         FreeBucket freeBucket = bucketService.getAndInitFreeBucket(shuntoutBO.getWenyBankID());
         if (freeBucket.getAmount() <= 0) {
-            throw new CircuitException("1200","余额不足");
+            throw new CircuitException("1200", "余额不足");
         }
         long realAmount = record.getReqAmount();
         if (record.getReqAmount() > freeBucket.getAmount()) {
@@ -57,19 +57,19 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         bill.setParticipant(record.getPersonName());
         bill.setBankid(record.getBankid());
         bill.setOrder(2);
-        bill.setAmount(realAmount);
-        bill.setBalance(fundBucket.getAmount() - realAmount);
+        bill.setAmount(realAmount * -1);
+        bill.setBalance(fundBucket.getAmount() + bill.getAmount());
         bill.setRefsn(record.getSn());
         bill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         bill.setNote(record.getNote());
         bill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
-        Calendar calendar=Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         bill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
         bill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
         bill.setMonth(calendar.get(Calendar.MONTH));
-        bill.setSeason(bill.getMonth()%4);
+        bill.setSeason(bill.getMonth() % 4);
         bill.setYear(calendar.get(Calendar.YEAR));
 
         fundBillMapper.insert(bill);
@@ -85,19 +85,19 @@ public class WenyBankShuntoutTradeService implements IWenyBankShuntoutTradeServi
         bill.setParticipant(record.getOperator());
         bill.setBankid(record.getBankid());
         bill.setOrder(2);
-        bill.setAmount(realAmount);
-        bill.setBalance(freeBucket.getAmount() - realAmount);
+        bill.setAmount(realAmount * -1);
+        bill.setBalance(freeBucket.getAmount() + bill.getAmount());
         bill.setRefsn(record.getSn());
         bill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         bill.setNote(record.getNote());
         bill.setWorkday(BankUtils.dateTimeToDay(System.currentTimeMillis()));
 
-        Calendar calendar=Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         bill.setDay(calendar.get(Calendar.DAY_OF_MONTH));
         bill.setWeekday(calendar.get(Calendar.DAY_OF_WEEK));
         bill.setMonth(calendar.get(Calendar.MONTH));
-        bill.setSeason(bill.getMonth()%4);
+        bill.setSeason(bill.getMonth() % 4);
         bill.setYear(calendar.get(Calendar.YEAR));
 
         freeBillMapper.insert(bill);

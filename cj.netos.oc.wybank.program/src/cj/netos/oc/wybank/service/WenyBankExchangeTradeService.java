@@ -43,7 +43,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         checkExchanged(record);
 
         PriceBucket priceBucket = bucketService.getandInitPriceBucket(record.getBankid());
-        long payableAmount = priceBucket.getPrice().multiply(record.getStock()).setScale(0, RoundingMode.HALF_DOWN).longValue();
+        long payableAmount = priceBucket.getPrice().multiply(record.getStock()).setScale(0, RoundingMode.DOWN).longValue();
         record.setPrice(priceBucket.getPrice());
         record.setAmount(payableAmount);
         record.setProfit(record.getAmount() - record.getPurchaseAmount());
@@ -90,7 +90,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
         if (stockBucket.getStock().compareTo(new BigDecimal("0.0")) <= 0) {
             afterPrice = new BigDecimal("0.001");
         } else {
-            afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.HALF_DOWN);
+            afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.DOWN);
         }
         priceBill.setAfterPrice(afterPrice);
 
@@ -122,7 +122,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
 
-        freezenBill.setBalance(freezenBucket.getAmount() - freezenBill.getAmount());
+        freezenBill.setBalance(freezenBucket.getAmount() + freezenBill.getAmount());
 
         freezenBillMapper.insert(freezenBill);
 
@@ -152,7 +152,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         FundBucket fundBucket = bucketService.getAndInitFundBucket(record.getBankid());
 
-        fundBill.setBalance(fundBucket.getAmount() - fundBill.getAmount());
+        fundBill.setBalance(fundBucket.getAmount() + fundBill.getAmount());
 
         fundBillMapper.insert(fundBill);
 
@@ -161,7 +161,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
     private void addStockBill(ExchangeRecord record) {
         StockBill stockBill = new StockBill();
-        stockBill.setStock(record.getStock().multiply(new BigDecimal("-1.0")).setScale(14, RoundingMode.HALF_DOWN));
+        stockBill.setStock(record.getStock().multiply(new BigDecimal("-1.0")).setScale(14, RoundingMode.DOWN));
         stockBill.setBankid(record.getBankid());
         stockBill.setCtime(BankUtils.dateTimeToMicroSecond(System.currentTimeMillis()));
         stockBill.setNote(record.getNote());
@@ -182,7 +182,7 @@ public class WenyBankExchangeTradeService implements IWenyBankExchangeTradeServi
 
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
 
-        BigDecimal balance = stockBucket.getStock().subtract(stockBill.getStock()).setScale(14, RoundingMode.HALF_DOWN);
+        BigDecimal balance = stockBucket.getStock().add(stockBill.getStock()).setScale(14, RoundingMode.DOWN);
         stockBill.setBalance(balance);
 
         stockBillMapper.insert(stockBill);

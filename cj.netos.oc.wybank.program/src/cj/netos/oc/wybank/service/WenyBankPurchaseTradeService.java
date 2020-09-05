@@ -75,7 +75,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
 
         FreezenBucket freezenBucket = bucketService.getAndInitFreezenBucket(record.getBankid());
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
-        BigDecimal afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.HALF_DOWN);
+        BigDecimal afterPrice = new BigDecimal(freezenBucket.getAmount()).divide(stockBucket.getStock(), 14, RoundingMode.DOWN);
         priceBill.setAfterPrice(afterPrice);
 
         priceBillMapper.insert(priceBill);
@@ -87,7 +87,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
     private void addStockBill(PurchaseRecord record) {
         PriceBucket priceBucket = bucketService.getandInitPriceBucket(record.getBankid());
         //本金除以当前价即纹银量
-        BigDecimal stock = new BigDecimal(record.getPrincipalAmount()).divide(priceBucket.getPrice(), 14, RoundingMode.HALF_DOWN);
+        BigDecimal stock = new BigDecimal(record.getPrincipalAmount()).divide(priceBucket.getPrice(), 14, RoundingMode.DOWN);
         record.setStock(stock);//返回用
 
         StockBill stockBill = new StockBill();
@@ -116,7 +116,7 @@ public class WenyBankPurchaseTradeService implements IWenyBankPurchaseTradeServi
 
         StockBucket stockBucket = bucketService.getAndInitStockBucket(record.getBankid());
 
-        BigDecimal balance = stockBucket.getStock().add(stockBill.getStock()).setScale(14, RoundingMode.HALF_DOWN);
+        BigDecimal balance = stockBucket.getStock().add(stockBill.getStock()).setScale(14, RoundingMode.DOWN);
         stockBill.setBalance(balance);
 
         stockBillMapper.insert(stockBill);
